@@ -1,0 +1,250 @@
+body {
+  font-family: 'Comic Neue', Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  background: #e3f2fd;
+  color: #1a237e;
+}
+
+.hidden {
+  display: none;
+}
+
+header {
+  background: #283593;
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.35);
+  letter-spacing: 1px;
+}
+
+header h1 i.fa {
+  font-size: 4rem;
+}
+
+.game-settings {
+  padding: 1rem;
+  text-align: center;
+  background: #3f51b5;
+  color: #fff;
+  width: 100%;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.game-settings .container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form-control {
+  padding: 0rem 1rem;
+  margin: 0rem 1rem;
+}
+
+.form-control label {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-control select {
+  font-size: 1.2rem;
+  border: 1px solid #2196f3;
+  font-family: 'Comic Neue', Arial, Helvetica, sans-serif;
+}
+
+.game-settings button {
+  display: block;
+  background: #2196f3;
+  color: #fff;
+  border: 0;
+  padding: 0.75rem 1.75rem;
+  margin: 1.5rem auto 0;
+  font-size: 1.4rem;
+  font-family: 'Comic Neue', Arial, Helvetica, sans-serif;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game-settings button:hover {
+  background: #03a9f4;
+}
+
+.game-play {
+  text-align: center;
+  font-size: 2rem;
+  padding: 2rem 0;
+}
+
+.game-equation {
+  font-size: 4rem;
+  border: 2px dotted #bbdefb;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
+.game-equation .intro {
+  color: #bbdefb;
+  display: flex;
+  flex: 1;
+}
+
+.game-equation .intro .fa {
+  font-size: 5rem;
+  padding: 1rem;
+}
+
+.game-equation .text {
+  font-size: 3rem;
+}
+
+.game-feedback {
+  text-align: center;
+  border-radius: 1rem;
+  border: 3px dotted #bbdefb;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  line-height: 1.4;
+}
+
+.correct {
+  color: #2e7d32;
+  background: #e8f5e9;
+  border-color: #c8e6c9;
+}
+.incorrect {
+  color: #c62828;
+  background: #ffebee;
+  border-color: #ffcdd2;
+}
+
+.game-timer {
+  font-size: 1.3rem;
+  position: relative;
+  background: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.game-timer .timer-bar {
+  background: #03a9f4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  z-index: 0;
+  border-radius: 5px;
+  transition: width 1s linear;
+}
+
+.game-timer .timer-left {
+  z-index: 1;
+  position: relative;
+  display: block;
+  padding: 0.25rem;
+}
+
+.game-scores {
+  max-width: 600px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  margin: 3rem auto;
+  border: 1px solid #bbdefb;
+}
+
+.game-scores p {
+  font-size: 1.25rem;
+  color: #9fa8da;
+}
+
+.game-scores h3 {
+  margin: 0.5rem 0.5rem 1rem;
+  font-size: 2rem;
+}
+
+.game-scores table {
+  margin: 0 auto;
+  border-spacing: 0;
+  border: 1px solid #bbdefb;
+  border-radius: 5px;
+}
+
+.game-scores th,
+.game-scores td {
+  border-bottom: 1px solid #bbdefb;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.25rem;
+}
+
+.game-scores tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.game-scores tr:last-child td {
+  border-bottom: 0;
+}
+
+.game-scores th {
+  font-weight: bold;
+  border-bottom-width: 2px;
+  background: #bbdefb;
+}
+
+.game-scores td {
+}
+
+.game-scores .th_date {
+  width: 20%;
+}
+
+.game-scores .th_time {
+  width: 15%;
+}
+
+.game-scores .btn_remove-scores {
+  display: block;
+  background: rgba(255, 255, 255, 0.5);
+  color: #2196f3;
+  border: 1px solid #90caf9;
+  padding: 0.5rem 1.25rem;
+  margin: 1.5rem auto 0;
+  font-size: 1rem;
+  font-family: 'Comic Neue', Arial, Helvetica, sans-serif;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.game-answer {
+  font-family: 'Comic Neue', Arial, Helvetica, sans-serif;
+  font-size: 3.75rem;
+  padding: 1rem;
+  width: 8rem;
+  text-align: center;
+  border-radius: 1rem;
+  border: 2px solid #bbdefb;
+  background: #fff;
+}
