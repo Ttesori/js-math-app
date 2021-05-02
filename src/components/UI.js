@@ -13,7 +13,11 @@ const UI = () => {
 
   const gameEl = {
     gameModalEl: document.querySelector('.mc-game-modal'),
-    gamebtnStopEl: document.querySelector('.mc-btn-stop')
+    gamebtnStopEl: document.querySelector('.mc-btn-stop'),
+    gameProblem1El: document.querySelector('.mc-game-problem-1'),
+    gameProblemTypeEl: document.querySelector('.mc-game-problem-type'),
+    gameProblem2El: document.querySelector('.mc-game-problem-2'),
+    gameAnswerEl: document.querySelector('.mc-game-answer')
   }
 
   settingsEl.settingTypeEl.addEventListener('change', () => updateVerb());
@@ -52,11 +56,18 @@ const UI = () => {
   const setupModal = (callback) => {
     console.log('Seting up modal...');
     // Show modal section
-    gameEl.gameModalEl.className = 'active';
+    gameEl.gameModalEl.classList.add('active');
 
     // Add event listener to stop
     gameEl.gamebtnStopEl.addEventListener('click', () => callback());
 
+  }
+
+  const showProblem = (problem, type) => {
+    gameEl.gameProblem1El.textContent = problem[0];
+    gameEl.gameProblem2El.textContent = problem[1];
+    gameEl.gameProblemTypeEl.textContent = type;
+    console.log(problem[2])
   }
 
   return {
@@ -66,14 +77,18 @@ const UI = () => {
     parseSettings: () => {
       updateVerb();
       return {
-        focus: parseInt(settingsEl.settingFocusEl.value),
+        focus: !settingsEl.settingMixedEl.checked ? parseInt(settingsEl.settingFocusEl.value) : -1,
         type: settingsEl.settingTypeEl.value,
         mixed: settingsEl.settingMixedEl.checked ? true : false,
         order: parseInt(settingsEl.settingOrderEl.value),
         length: parseInt(settingsEl.settingLengthEl.value)
       }
     },
-    setupModal: (callback) => setupModal(callback)
+    setupModal: (callback) => setupModal(callback),
+    closeModal: () => {
+      gameEl.gameModalEl.classList.remove('active')
+    },
+    showProblem: (problem, type) => showProblem(problem, type)
   }
 
 }
