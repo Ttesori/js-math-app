@@ -22,10 +22,19 @@ const startGame = () => {
   // Parse settings from UI
   settings.setSettings(ui.parseSettings());
 
-  // Alter settings for subtracting and dividing -- see apple notes
+
+  // Run timer, increment state every second
+  let gameLength = settings.getSettings().length;
+  let interval = window.setInterval(() => {
+    game.incrementTimer(gameLength, interval, () => console.log('Game over!'));
+  }, 1000);
 
   // Tell UI to open game modal
-  // Run timer
+  ui.setupModal(() => {
+    console.log('Quit game...');
+    clearInterval(interval);
+  });
+
 }
 
 // Create & display problem

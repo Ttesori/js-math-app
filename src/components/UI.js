@@ -8,6 +8,12 @@ const UI = () => {
     settingOrderEl: document.querySelector('.mc-settings-order'),
     settingLengthEl: document.querySelector('.mc-settings-length'),
     btnStartGameEl: document.querySelector('#mc-settings-btn')
+
+  }
+
+  const gameEl = {
+    gameModalEl: document.querySelector('.mc-game-modal'),
+    gamebtnStopEl: document.querySelector('.mc-btn-stop')
   }
 
   settingsEl.settingTypeEl.addEventListener('change', () => updateVerb());
@@ -43,6 +49,16 @@ const UI = () => {
 
   }
 
+  const setupModal = (callback) => {
+    console.log('Seting up modal...');
+    // Show modal section
+    gameEl.gameModalEl.className = 'active';
+
+    // Add event listener to stop
+    gameEl.gamebtnStopEl.addEventListener('click', () => callback());
+
+  }
+
   return {
     setupStartEventListener: (callback) => {
       settingsEl.btnStartGameEl.addEventListener('click', () => callback());
@@ -52,11 +68,12 @@ const UI = () => {
       return {
         focus: parseInt(settingsEl.settingFocusEl.value),
         type: settingsEl.settingTypeEl.value,
-        mixed: settingsEl.settingMixedEl.value === 'checked' ? true : false,
+        mixed: settingsEl.settingMixedEl.checked ? true : false,
         order: parseInt(settingsEl.settingOrderEl.value),
         length: parseInt(settingsEl.settingLengthEl.value)
       }
-    }
+    },
+    setupModal: (callback) => setupModal(callback)
   }
 
 }

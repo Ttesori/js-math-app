@@ -8,6 +8,15 @@ const Game = () => {
     currNum2: 0
   }
 
+  const runClock = (gameLength, interval, callback) => {
+    state.timeElapsed++;
+    console.log(state.timeElapsed);
+    if (state.timeElapsed === gameLength) {
+      clearInterval(interval);
+      callback();
+    }
+  }
+
   return {
     getState: () => state,
     setState: (prop, val) => {
@@ -15,8 +24,9 @@ const Game = () => {
       console.log(`${prop} set to ${val}`, state[prop])
     },
     getNums: (focusNum, maxNum) => [focusNum, maxNum],
-    incrementCorrect: () => correct++,
-    incrementIncorrect: () => incorrect++
+    incrementCorrect: () => state.correct++,
+    incrementIncorrect: () => state.incorrect++,
+    incrementTimer: (gameLength, interval, callback) => runClock(gameLength, interval, callback)
   }
 }
 

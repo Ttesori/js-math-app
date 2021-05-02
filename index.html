@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
   <title>MathChamp</title>
+
+  <style>
+    .mc-game-modal {
+      display:none;
+    }
+
+    .active {
+      display:block !important;
+    }
+  </style>
 </head>
 <body>
   <h1>MathChamp</h1>
@@ -24,7 +34,6 @@
         <div class="form-control">
           <label>I want to focus on <span class="mc-settings-type-verb">adding</span> the number...</label>
           <select class="mc-settings-focus">
-            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -37,7 +46,6 @@
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
-            <option value="-1">Mixed</option>
           </select>
         </div>
         <span class="mc-settings-or">OR</span>
@@ -70,6 +78,11 @@
   <section class="mc-scoreboard">
     <h2>My Scoreboard</h2>
 
+  </section>
+
+  <section class="mc-game-modal">
+    <h3>Game Area</h3>
+    <button class="mc-btn-stop">Stop Game</button>
   </section>
   
   <script type="module" src="src/app.js"></script>
