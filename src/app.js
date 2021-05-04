@@ -37,6 +37,9 @@ const startGame = () => {
   // Tell UI to open game modal
   ui.setupModal(() => { gameIsQuitEarly(interval) });
 
+  // Set up answer event listener
+  ui.setupSolveEventListener(() => checkAnswer(ui.getAnswer()));
+
   // Generate problems
   runGame();
 
@@ -49,6 +52,7 @@ const gameIsQuitEarly = (interval) => {
   ui.closeModal();
 
   // Reset game
+  game.resetState();
 
 }
 
@@ -58,6 +62,7 @@ const gameIsOver = () => {
   console.log(game.getState());
 
   // Reset Game
+  game.resetState();
 
   // Update Scoreboard
 }
@@ -67,9 +72,8 @@ const runGame = () => {
     console.log('Showing problem...');
     // Get problem from game
     let gameSettings = settings.getSettings();
-    // TODO: get problem logic bug - I'm sorting the numbers before theyre returned so if focus number is smallest and we're subtracting, it's always the answer. 
 
-    let problem = game.getProblem(gameSettings.focus, gameSettings.type);
+    let problem = game.getProblem(gameSettings.focus, gameSettings.type, gameSettings.order);
     console.log(problem);
     // display problem in UI
     ui.showProblem(problem, gameSettings.type);
@@ -84,10 +88,19 @@ const runGame = () => {
   // Display new problem
 }
 
-const checkAnswer = () => {
+const checkAnswer = (answer) => {
   // Check problem
   // If correct inc game state correct
   // If incorrect inc game state incorrect
+  let state = game.getState();
+  if (state.currAnswer === answer) {
+    game.incrementCorrect();
+  } else {
+    game.incrementIncorrect();
+  }
+  console.log(game.getState());
+  ui.resetAnswer();
+  runGame();
 }
 
 

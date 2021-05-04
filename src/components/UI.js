@@ -20,7 +20,7 @@ const UI = () => {
     gameAnswerEl: document.querySelector('.mc-game-answer')
   }
 
-  settingsEl.settingTypeEl.addEventListener('change', () => updateVerb());
+  settingsEl.settingTypeEl.addEventListener('change', () => updateFromType());
   settingsEl.settingMixedEl.addEventListener('change', () => {
     const mixedElValue = settingsEl.settingMixedEl.checked;
     if (mixedElValue) {
@@ -31,21 +31,46 @@ const UI = () => {
   });
 
 
-  const updateVerb = () => {
+  const updateFromType = () => {
     const type = settingsEl.settingTypeEl.value;
+    settingsEl.settingFocusEl.removeAttribute('disabled');
+
+    let addSubNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let multDivNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+    let addHTML = addSubNums.map(num => {
+      return `<option value="${num}">${num}</option>`;
+    });
+
+    let multHTML = multDivNums.map(num => {
+      return `<option value="${num}">${num}</option>`;
+    });
+
+
 
     switch (type) {
       case '+':
         settingsEl.settingTypeVerbEl.innerHTML = 'adding';
+        // focus num list goes to 10
+        // use map to map array to html elements
+        settingsEl.settingFocusEl.innerHTML = addHTML;
         break;
+
       case '-':
+        // focus num list goes to 10
         settingsEl.settingTypeVerbEl.innerHTML = 'subtracting';
+        settingsEl.settingFocusEl.innerHTML = addHTML;
+        // TODO: Edit focus nums depending on game type
         break;
       case '*':
+        // focus num list goes to 12
         settingsEl.settingTypeVerbEl.innerHTML = 'multiplying';
+        settingsEl.settingFocusEl.innerHTML = multHTML;
         break;
       case '/':
+        // focus num list goes to 12
         settingsEl.settingTypeVerbEl.innerHTML = 'dividing';
+        settingsEl.settingFocusEl.innerHTML = multHTML;
         break;
       default:
         break;
@@ -57,6 +82,9 @@ const UI = () => {
     console.log('Seting up modal...');
     // Show modal section
     gameEl.gameModalEl.classList.add('active');
+
+    // Focus on input
+    gameEl.gameAnswerEl.focus();
 
     // Add event listener to stop
     gameEl.gamebtnStopEl.addEventListener('click', () => callback());
@@ -70,12 +98,19 @@ const UI = () => {
     console.log(problem[2])
   }
 
+  const setupSolveEventListener = (callback) => {
+    gameEl.gameAnswerEl.addEventListener('keydown', (e) => {
+      if (e.keyCode === 13 && gameEl.gameAnswerEl.value !== '') {
+        callback();
+      }
+    });
+  }
+
   return {
     setupStartEventListener: (callback) => {
       settingsEl.btnStartGameEl.addEventListener('click', () => callback());
     },
     parseSettings: () => {
-      updateVerb();
       return {
         focus: !settingsEl.settingMixedEl.checked ? parseInt(settingsEl.settingFocusEl.value) : -1,
         type: settingsEl.settingTypeEl.value,
@@ -88,33 +123,12 @@ const UI = () => {
     closeModal: () => {
       gameEl.gameModalEl.classList.remove('active')
     },
-    showProblem: (problem, type) => showProblem(problem, type)
+    showProblem: (problem, type) => showProblem(problem, type),
+    setupSolveEventListener: (callback) => setupSolveEventListener(callback),
+    getAnswer: () => parseInt(gameEl.gameAnswerEl.value),
+    resetAnswer: () => gameEl.gameAnswerEl.value = ''
   }
 
 }
-
-
-// // Settings Elements
-// const settingsEl = {
-//   settingFocusEl: document.querySelector('.mc-settings-focus'),
-//   settingTypeVerbEl: document.querySelector('.mc-settings-type-verb'),
-//   settingMaxEl: document.querySelector('.mc-settings-max'),
-//   settingOrderEl: document.querySelector('.mc-settings-order'),
-//   settingLengthEl: document.querySelector('.mc-settings-length'),
-//   btnStartGameEl: document.querySelector('#mc-settings-btn')
-// }
-// // Game Elements
-// const gameEls = {
-//   gameEquationEl: document.querySelector('.game-equation'),
-//   gameFeedbackEl: document.querySelector('.game-feedback'),
-//   gameTimerEl: document.querySelector('.game-timer'),
-//   gameTimerTextEl: document.querySelector('.timer-left'),
-//   gameTimerBarEl: document.querySelector('.timer-bar'),
-//   inputEl: document.createElement('input')
-// }
-// // Scoreboard Elements
-// const scoreboardEls = {
-//   scoreboardEl: document.querySelector('.mc-scoreboard')
-// }
 
 export default UI;
