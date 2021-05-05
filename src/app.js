@@ -14,8 +14,8 @@ const init = () => {
   // Add event listeners
   ui.setupStartEventListener(startGame);
 
-  // Load Settings if saved in LS
-  // Load scoreboard
+  // TODO: Load Settings if saved in LS
+  // TODO: Load scoreboard if saved in LS
 }
 
 // What to do when Start Game button is clicked
@@ -23,16 +23,10 @@ const startGame = () => {
   // Parse settings from UI
   settings.setSettings(ui.parseSettings());
 
-  // Set state to start game
-  game.setState('state', 1);
-
-
   // Run timer, increment state every second
   let gameLength = settings.getSettings().length;
   let interval = window.setInterval(() => {
-    game.incrementTimer(gameLength, interval, () => {
-      gameIsOver();
-    });
+    game.incrementTimer(gameLength, interval, () => gameIsOver());
     ui.displayTimer(game.getState().timeElapsed);
   }, 1000);
 
@@ -48,7 +42,7 @@ const startGame = () => {
 }
 
 const gameIsQuitEarly = (interval) => {
-  console.log('Quit game early...');
+  // Modal is closed
   clearInterval(interval);
   game.setState('state', 0);
   ui.closeModal();
@@ -59,13 +53,19 @@ const gameIsQuitEarly = (interval) => {
 }
 
 const gameIsOver = () => {
-  console.log('Game is over!');
+  // Get game stats
   let gameStats = game.getState();
-  game.setState('state', 0);
-  console.log(game.getState());
+
+  // Show feedback
   let corrPercentage = Math.round((gameStats.correct / (gameStats.correct + gameStats.incorrect)) * 100);
   ui.displayFeedback(2, `Game over! You got ${gameStats.correct} problems correct and ${gameStats.incorrect} problems incorrect for a percentage correct of ${corrPercentage}%`);
   ui.hideGameEls();
+
+  // Reset Game
+  game.setState('state', 0);
+  game.resetState();
+
+  // Update Scoreboard
   let date = new Date();
   let score = {
     date: `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`,
@@ -75,40 +75,20 @@ const gameIsOver = () => {
   }
   let scores = scoreboard.addScore(score);
   ui.updateScoreboard(scores);
-
-  // Reset Game
-  game.resetState();
-
-  // Update Scoreboard
 }
 
 const runGame = () => {
-  if (game.getState().state === 1) {
-    console.log('Showing problem...');
-    // Get problem from game
-    let gameSettings = settings.getSettings();
+  // Get problem from game
+  let gameSettings = settings.getSettings();
+  let problem = game.getProblem(gameSettings.focus, gameSettings.type);
 
-    let problem = game.getProblem(gameSettings.focus, gameSettings.type);
-    console.log(problem);
-    // display problem in UI
-    ui.showProblem(problem, gameSettings.type);
-    // Listen for keyboard or mouse input
-    // Pass function for checking answer
-
-  }
-
-
-
-  // Display feedback
-  // Display new problem
+  // display problem in UI
+  ui.showProblem(problem, gameSettings.type);
 }
 
 const checkAnswer = (answer) => {
   // Check problem
-  // If correct inc game state correct
-  // If incorrect inc game state incorrect
   let state = game.getState();
-  console.log(answer, state.currAnswer);
   if (state.currAnswer === answer) {
     game.incrementCorrect();
     ui.displayFeedback(1, 'Correct! Great job!');
@@ -116,19 +96,9 @@ const checkAnswer = (answer) => {
     game.incrementIncorrect();
     ui.displayFeedback(0, `Good try! The correct answer was: ${answer}`);
   }
-  console.log(game.getState());
+  // Reset answer
   ui.resetAnswer();
   runGame();
 }
-
-
-
-
-// Game Over, after time runs out
-// Calculate percentage
-// Push state to scoreboard
-
-
-// Reset Game: After game over or if quit game is clicked
 
 init();

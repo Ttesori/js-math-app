@@ -26,18 +26,19 @@ const UI = () => {
     scoreEl: document.querySelector('.mc-scoreboard')
   }
 
+  const init = () => {
+    // Initial event listeners
+    settingsEl.settingTypeEl.addEventListener('change', () => updateFromType());
+    settingsEl.settingMixedEl.addEventListener('change', () => {
+      const mixedElValue = settingsEl.settingMixedEl.checked;
+      if (mixedElValue) {
+        settingsEl.settingFocusEl.disabled = "disabled";
 
-  settingsEl.settingTypeEl.addEventListener('change', () => updateFromType());
-  settingsEl.settingMixedEl.addEventListener('change', () => {
-    const mixedElValue = settingsEl.settingMixedEl.checked;
-    if (mixedElValue) {
-      settingsEl.settingFocusEl.disabled = "disabled";
-
-    } else {
-      settingsEl.settingFocusEl.removeAttribute('disabled');
-    }
-  });
-
+      } else {
+        settingsEl.settingFocusEl.removeAttribute('disabled');
+      }
+    });
+  }
 
   const updateFromType = () => {
     const type = settingsEl.settingTypeEl.value;
@@ -86,7 +87,7 @@ const UI = () => {
 
   }
 
-  const setupModal = (callback) => {
+  const _setupModal = (callback) => {
     console.log('Seting up modal...');
     // Show modal section
     gameEl.gameModalEl.classList.add('active');
@@ -107,14 +108,14 @@ const UI = () => {
 
   }
 
-  const showProblem = (problem, type) => {
+  const _showProblem = (problem, type) => {
     gameEl.gameProblem1El.textContent = problem[0];
     gameEl.gameProblem2El.textContent = problem[1];
     gameEl.gameProblemTypeEl.textContent = type;
     console.log(problem[2])
   }
 
-  const setupSolveEventListener = (callback) => {
+  const _setupSolveEventListener = (callback) => {
     gameEl.gameAnswerEl.addEventListener('keydown', (e) => {
       if (e.keyCode === 13 && gameEl.gameAnswerEl.value !== '') {
         callback();
@@ -156,10 +157,10 @@ const UI = () => {
     `;
   }
 
+  init()
+
   return {
-    setupStartEventListener: (callback) => {
-      settingsEl.btnStartGameEl.addEventListener('click', () => callback());
-    },
+    setupStartEventListener: (callback) => settingsEl.btnStartGameEl.addEventListener('click', () => callback()),
     parseSettings: () => {
       return {
         focus: !settingsEl.settingMixedEl.checked ? parseInt(settingsEl.settingFocusEl.value) : -1,
@@ -168,12 +169,10 @@ const UI = () => {
         length: parseInt(settingsEl.settingLengthEl.value)
       }
     },
-    setupModal: (callback) => setupModal(callback),
-    closeModal: () => {
-      gameEl.gameModalEl.classList.remove('active')
-    },
-    showProblem: (problem, type) => showProblem(problem, type),
-    setupSolveEventListener: (callback) => setupSolveEventListener(callback),
+    setupModal: (callback) => _setupModal(callback),
+    closeModal: () => gameEl.gameModalEl.classList.remove('active'),
+    showProblem: (problem, type) => _showProblem(problem, type),
+    setupSolveEventListener: (callback) => _setupSolveEventListener(callback),
     getAnswer: () => parseInt(gameEl.gameAnswerEl.value),
     resetAnswer: () => gameEl.gameAnswerEl.value = '',
     displayFeedback: (isCorrect, msg) => _displayFeedback(isCorrect, msg),

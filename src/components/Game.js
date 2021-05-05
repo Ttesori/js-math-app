@@ -7,12 +7,11 @@ const Game = () => {
     currNum1: 0,
     currNum2: 0,
     currAnswer: 0,
-    state: 0
   }
 
   const initialState = { ...state };
 
-  const runClock = (gameLength, interval, callback) => {
+  const _runClock = (gameLength, interval, callback) => {
     state.timeElapsed++;
     if (state.timeElapsed >= gameLength) {
       clearInterval(interval);
@@ -20,7 +19,7 @@ const Game = () => {
     }
   }
 
-  const generateProblem = (focusNum, type) => {
+  const _generateProblem = (focusNum, type) => {
     const addSub = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const sub = [...addSub, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
     const multDiv = [...addSub, 11, 12];
@@ -71,8 +70,8 @@ const Game = () => {
     getNums: (focusNum, maxNum) => [focusNum, maxNum],
     incrementCorrect: () => state.correct++,
     incrementIncorrect: () => state.incorrect++,
-    incrementTimer: (gameLength, interval, callback) => runClock(gameLength, interval, callback),
-    getProblem: (focusNum, type, isSequential) => generateProblem(focusNum, type, isSequential),
+    incrementTimer: (gameLength, interval, callback) => _runClock(gameLength, interval, callback),
+    getProblem: (focusNum, type, isSequential) => _generateProblem(focusNum, type, isSequential),
     resetState: () => state = { ...initialState }
   }
 }
