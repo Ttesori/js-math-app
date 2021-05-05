@@ -7,6 +7,7 @@ import Scoreboard from './components/Scoreboard.js';
 const ui = UI();
 const game = Game();
 const settings = Settings();
+const scoreboard = Scoreboard();
 
 // Initialize app
 const init = () => {
@@ -32,6 +33,7 @@ const startGame = () => {
     game.incrementTimer(gameLength, interval, () => {
       gameIsOver();
     });
+    ui.displayTimer(game.getState().timeElapsed);
   }, 1000);
 
   // Tell UI to open game modal
@@ -58,8 +60,21 @@ const gameIsQuitEarly = (interval) => {
 
 const gameIsOver = () => {
   console.log('Game is over!');
+  let gameStats = game.getState();
   game.setState('state', 0);
   console.log(game.getState());
+  let corrPercentage = Math.round((gameStats.correct / (gameStats.correct + gameStats.incorrect)) * 100);
+  ui.displayFeedback(2, `Game over! You got ${gameStats.correct} problems correct and ${gameStats.incorrect} problems incorrect for a percentage correct of ${corrPercentage}%`);
+  ui.hideGameEls();
+  let date = new Date();
+  let score = {
+    date: `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`,
+    type: settings.getSettings().type,
+    correct: gameStats.correct,
+    percentage: corrPercentage
+  }
+  let scores = scoreboard.addScore(score);
+  ui.updateScoreboard(scores);
 
   // Reset Game
   game.resetState();
@@ -95,8 +110,10 @@ const checkAnswer = (answer) => {
   let state = game.getState();
   if (state.currAnswer === answer) {
     game.incrementCorrect();
+    ui.displayFeedback(1, 'Correct! Great job!');
   } else {
     game.incrementIncorrect();
+    ui.displayFeedback(0, `Good try! The correct answer was: ${answer}`);
   }
   console.log(game.getState());
   ui.resetAnswer();

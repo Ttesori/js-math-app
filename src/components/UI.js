@@ -17,16 +17,29 @@ const UI = () => {
     gameProblem1El: document.querySelector('.mc-game-problem-1'),
     gameProblemTypeEl: document.querySelector('.mc-game-problem-type'),
     gameProblem2El: document.querySelector('.mc-game-problem-2'),
-    gameAnswerEl: document.querySelector('.mc-game-answer')
+    gameAnswerEl: document.querySelector('.mc-game-answer'),
+    gameFeedbackEl: document.querySelector('.mc-game-feedback'),
+    gameProblemEqualEl: document.querySelector('.mc-game-problem-equals'),
+    gameTimerEl: document.querySelector('.mc-game-timer')
   }
+
+  const scoresEl = {
+    scoreEl: document.querySelector('.mc-scoreboard')
+  }
+
 
   settingsEl.settingTypeEl.addEventListener('change', () => updateFromType());
   settingsEl.settingMixedEl.addEventListener('change', () => {
     const mixedElValue = settingsEl.settingMixedEl.checked;
     if (mixedElValue) {
       settingsEl.settingFocusEl.disabled = "disabled";
+      settingsEl.settingOrderEl.value = 0;
+      settingsEl.settingOrderEl.disabled = "disabled";
+
     } else {
       settingsEl.settingFocusEl.removeAttribute('disabled');
+      settingsEl.settingOrderEl.removeAttribute('disabled');
+
     }
   });
 
@@ -106,6 +119,39 @@ const UI = () => {
     });
   }
 
+  const _displayFeedback = (isCorrect, msg) => {
+    gameEl.gameFeedbackEl.textContent = msg;
+  }
+
+  const _displayTimer = (seconds = '') => {
+    gameEl.gameTimerEl.textContent = seconds;
+  }
+
+  const _hideGameEls = () => {
+    gameEl.gameProblem1El.classList.add('hide');
+    gameEl.gameProblem2El.classList.add('hide');
+    gameEl.gameProblemTypeEl.classList.add('hide');
+    gameEl.gameAnswerEl.classList.add('hide');
+    gameEl.gameTimerEl.classList.add('hide');
+    gameEl.gameProblemEqualEl.classList.add('hide');
+    gameEl.gamebtnStopEl.textContent = 'Close Window';
+  }
+
+  const _updateScoreboard = (scores) => {
+    const scoresEls = scores.map((score) => `<tr><td>${score.date}</td><td>${score.type}</td><td>${score.correct}</td><td> ${score.percentage}%</td></tr>`);
+    scoresEl.scoreEl.innerHTML = `
+    <table>
+    <tr>
+    <th>Date</th>
+    <th>Game Type</th>
+    <th># Correct</th>
+    <th>% Correct</th>
+    </tr>
+    ${scoresEls}
+    </table>
+    `;
+  }
+
   return {
     setupStartEventListener: (callback) => {
       settingsEl.btnStartGameEl.addEventListener('click', () => callback());
@@ -126,7 +172,11 @@ const UI = () => {
     showProblem: (problem, type) => showProblem(problem, type),
     setupSolveEventListener: (callback) => setupSolveEventListener(callback),
     getAnswer: () => parseInt(gameEl.gameAnswerEl.value),
-    resetAnswer: () => gameEl.gameAnswerEl.value = ''
+    resetAnswer: () => gameEl.gameAnswerEl.value = '',
+    displayFeedback: (isCorrect, msg) => _displayFeedback(isCorrect, msg),
+    displayTimer: (seconds) => _displayTimer(seconds),
+    hideGameEls: () => _hideGameEls(),
+    updateScoreboard: (scores) => _updateScoreboard(scores)
   }
 
 }

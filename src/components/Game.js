@@ -14,7 +14,6 @@ const Game = () => {
 
   const runClock = (gameLength, interval, callback) => {
     state.timeElapsed++;
-    console.log(state.timeElapsed);
     if (state.timeElapsed >= gameLength) {
       clearInterval(interval);
       callback();
@@ -22,16 +21,14 @@ const Game = () => {
   }
 
   const generateProblem = (focusNum, type, isSequential) => {
-    console.log(isSequential);
     const addSub = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const sub = [...addSub, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
     const multDiv = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
     if (type === '+') {
-      let num1 = focusNum !== -1 ? focusNum : getRand(addSub.length);
-      let num2 = isSequential ? addSub[addSub.indexOf(state.currNum2) + 1] : getRand(addSub.length);
-      state.currNum1 = Math.max(num1, num2);
-      state.currNum2 = Math.min(num1, num2);
+      state.currNum1 = focusNum !== -1 ? focusNum : getRand(addSub.length);
+      let nextIdx = addSub[addSub.indexOf(state.currNum2) + 1] ? addSub.indexOf(state.currNum2) + 1 : 0;
+      state.currNum2 = isSequential ? addSub[nextIdx] : getRand(addSub.length);
 
       state.currAnswer = state.currNum1 + state.currNum2;
       return [state.currNum1, state.currNum2, state.currAnswer];

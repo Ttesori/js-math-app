@@ -8,7 +8,7 @@
   <title>MathChamp</title>
 
   <style>
-    .mc-game-modal {
+    .mc-game-modal, .hide {
       display:none;
     }
 
@@ -75,9 +75,9 @@
         Start Game <i class="fa fa-arrow-circle-right"></i>
       </button>
 
-  <section class="mc-scoreboard">
+  <section class="mc-scoreboard-container">
     <h2>My Scoreboard</h2>
-
+    <div class="mc-scoreboard"></div>
   </section>
 
   <section class="mc-game-modal">
@@ -88,6 +88,8 @@
       <div class="mc-game-problem-2"></div>
       <div class="mc-game-problem-equals">=</div>
       <input type="number" class="mc-game-answer">
+      <div class="mc-game-feedback"></div>
+      <div class="mc-game-timer"></div>
       
     </section>
     <button class="mc-btn-stop">Stop Game</button>
