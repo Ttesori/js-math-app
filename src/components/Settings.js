@@ -3,7 +3,6 @@ const Settings = () => {
     focus: 0,
     type: '',
     mixed: false,
-    order: 0,
     length: 0
   }
 

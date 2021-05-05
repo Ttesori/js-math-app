@@ -5,7 +5,6 @@ const UI = () => {
     settingFocusEl: document.querySelector('.mc-settings-focus'),
     settingTypeVerbEl: document.querySelector('.mc-settings-type-verb'),
     settingMixedEl: document.querySelector('.mc-settings-mixed'),
-    settingOrderEl: document.querySelector('.mc-settings-order'),
     settingLengthEl: document.querySelector('.mc-settings-length'),
     btnStartGameEl: document.querySelector('#mc-settings-btn')
 
@@ -33,13 +32,9 @@ const UI = () => {
     const mixedElValue = settingsEl.settingMixedEl.checked;
     if (mixedElValue) {
       settingsEl.settingFocusEl.disabled = "disabled";
-      settingsEl.settingOrderEl.value = 0;
-      settingsEl.settingOrderEl.disabled = "disabled";
 
     } else {
       settingsEl.settingFocusEl.removeAttribute('disabled');
-      settingsEl.settingOrderEl.removeAttribute('disabled');
-
     }
   });
 
@@ -95,6 +90,14 @@ const UI = () => {
     console.log('Seting up modal...');
     // Show modal section
     gameEl.gameModalEl.classList.add('active');
+    gameEl.gameProblem1El.classList.remove('hide');
+    gameEl.gameProblem2El.classList.remove('hide');
+    gameEl.gameProblemTypeEl.classList.remove('hide');
+    gameEl.gameAnswerEl.classList.remove('hide');
+    gameEl.gameTimerEl.classList.remove('hide');
+    gameEl.gameProblemEqualEl.classList.remove('hide');
+    _displayFeedback('');
+    gameEl.gamebtnStopEl.textContent = 'Quit Game';
 
     // Focus on input
     gameEl.gameAnswerEl.focus();
@@ -138,7 +141,8 @@ const UI = () => {
   }
 
   const _updateScoreboard = (scores) => {
-    const scoresEls = scores.map((score) => `<tr><td>${score.date}</td><td>${score.type}</td><td>${score.correct}</td><td> ${score.percentage}%</td></tr>`);
+    const scoresEls = scores.map((score) => `
+    <tr><td>${score.date}</td><td>${score.type}</td><td>${score.correct}</td><td> ${score.percentage}%</td></tr>`);
     scoresEl.scoreEl.innerHTML = `
     <table>
     <tr>
@@ -147,7 +151,7 @@ const UI = () => {
     <th># Correct</th>
     <th>% Correct</th>
     </tr>
-    ${scoresEls}
+    ${scoresEls.join('')}
     </table>
     `;
   }
@@ -161,7 +165,6 @@ const UI = () => {
         focus: !settingsEl.settingMixedEl.checked ? parseInt(settingsEl.settingFocusEl.value) : -1,
         type: settingsEl.settingTypeEl.value,
         mixed: settingsEl.settingMixedEl.checked ? true : false,
-        order: parseInt(settingsEl.settingOrderEl.value),
         length: parseInt(settingsEl.settingLengthEl.value)
       }
     },

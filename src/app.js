@@ -88,7 +88,7 @@ const runGame = () => {
     // Get problem from game
     let gameSettings = settings.getSettings();
 
-    let problem = game.getProblem(gameSettings.focus, gameSettings.type, gameSettings.order);
+    let problem = game.getProblem(gameSettings.focus, gameSettings.type);
     console.log(problem);
     // display problem in UI
     ui.showProblem(problem, gameSettings.type);
@@ -108,6 +108,7 @@ const checkAnswer = (answer) => {
   // If correct inc game state correct
   // If incorrect inc game state incorrect
   let state = game.getState();
+  console.log(answer, state.currAnswer);
   if (state.currAnswer === answer) {
     game.incrementCorrect();
     ui.displayFeedback(1, 'Correct! Great job!');
