@@ -12,14 +12,17 @@ const UI = () => {
 
   const gameEl = {
     gameModalEl: document.querySelector('.mc-game-modal'),
-    gamebtnStopEl: document.querySelector('.mc-btn-stop'),
+    gameBtnStopEl: document.querySelector('.mc-btn-stop'),
     gameProblem1El: document.querySelector('.mc-game-problem-1'),
     gameProblemTypeEl: document.querySelector('.mc-game-problem-type'),
     gameProblem2El: document.querySelector('.mc-game-problem-2'),
     gameAnswerEl: document.querySelector('.mc-game-answer'),
     gameFeedbackEl: document.querySelector('.mc-game-feedback'),
     gameProblemEqualEl: document.querySelector('.mc-game-problem-equals'),
-    gameTimerEl: document.querySelector('.mc-game-timer')
+    gameTimerEl: document.querySelector('.mc-game-timer'),
+    gameTimerBarEl: document.querySelector('.mc-game-timer-bar'),
+    gameTimerBarTextEl: document.querySelector('.mc-game-timer-text'),
+    gameBtnCloseEl: document.querySelector('.mc-btn-close')
   }
 
   const scoresEl = {
@@ -55,6 +58,9 @@ const UI = () => {
       return `<option value="${num}">${num}</option>`;
     });
 
+    // Removed mixed checked if checkced
+    if (settingsEl.settingMixedEl.checked) settingsEl.settingMixedEl.checked = false;
+
 
 
     switch (type) {
@@ -88,7 +94,6 @@ const UI = () => {
   }
 
   const _setupModal = (callback) => {
-    console.log('Seting up modal...');
     // Show modal section
     gameEl.gameModalEl.classList.add('active');
     gameEl.gameProblem1El.classList.remove('hide');
@@ -98,13 +103,17 @@ const UI = () => {
     gameEl.gameTimerEl.classList.remove('hide');
     gameEl.gameProblemEqualEl.classList.remove('hide');
     _displayFeedback('');
-    gameEl.gamebtnStopEl.textContent = 'Quit Game';
+    gameEl.gameBtnStopEl.textContent = 'Quit Game';
 
     // Focus on input
     gameEl.gameAnswerEl.focus();
 
     // Add event listener to stop
-    gameEl.gamebtnStopEl.addEventListener('click', () => callback());
+    gameEl.gameBtnStopEl.addEventListener('click', () => callback());
+    gameEl.gameBtnCloseEl.addEventListener('click', () => callback());
+
+    // Reset timer bar and text
+    gameEl.gameTimerBarTextEl.textContent = "Ready...set...GO!";
 
   }
 
@@ -115,7 +124,6 @@ const UI = () => {
     if (prettyType === '*') prettyType = 'x';
     if (prettyType === '/') prettyType = '&divide;'
     gameEl.gameProblemTypeEl.innerHTML = prettyType;
-    console.log(problem[2])
   }
 
   const _setupSolveEventListener = (callback) => {
@@ -130,8 +138,13 @@ const UI = () => {
     gameEl.gameFeedbackEl.textContent = msg;
   }
 
-  const _displayTimer = (seconds = '') => {
-    gameEl.gameTimerEl.textContent = seconds;
+  const _displayTimer = (seconds = '', timeMax) => {
+    gameEl.gameTimerBarTextEl.innerHTML = `${seconds} seconds left!`;
+    let width = Math.round(((timeMax - seconds) / timeMax) * 100);
+    gameEl.gameTimerBarEl.setAttribute(
+      'style',
+      `width:${100 - width}%;`
+    );
   }
 
   const _hideGameEls = () => {
@@ -141,7 +154,7 @@ const UI = () => {
     gameEl.gameAnswerEl.classList.add('hide');
     gameEl.gameTimerEl.classList.add('hide');
     gameEl.gameProblemEqualEl.classList.add('hide');
-    gameEl.gamebtnStopEl.textContent = 'Close Window';
+    gameEl.gameBtnStopEl.textContent = 'Close Window';
   }
 
   const _updateScoreboard = (scores) => {
@@ -149,15 +162,18 @@ const UI = () => {
     <tr>
     <td>${score.date}</td>
     <td>${score.type}</td>
+    <td>${score.length}</td>
     <td>${score.focusNum}</td>
     <td>${score.correct}</td>
     <td> ${score.percentage}%</td>
     </tr>`);
+
     scoresEl.scoreEl.innerHTML = `
     <table>
     <tr>
     <th>Date</th>
     <th>Game Type</th>
+    <th>Game Length</th>
     <th>Focus Number</th>
     <th># Correct</th>
     <th>% Correct</th>
@@ -186,9 +202,10 @@ const UI = () => {
     getAnswer: () => parseInt(gameEl.gameAnswerEl.value),
     resetAnswer: () => gameEl.gameAnswerEl.value = '',
     displayFeedback: (isCorrect, msg) => _displayFeedback(isCorrect, msg),
-    displayTimer: (seconds) => _displayTimer(seconds),
+    displayTimer: (seconds, length) => _displayTimer(seconds, length),
     hideGameEls: () => _hideGameEls(),
-    updateScoreboard: (scores) => _updateScoreboard(scores)
+    updateScoreboard: (scores) => _updateScoreboard(scores),
+    resetTimerBar: () => gameEl.gameTimerBarEl.setAttribute('style', `width:100%;`)
   }
 
 }

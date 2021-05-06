@@ -9,6 +9,9 @@ const game = Game();
 const settings = Settings();
 const scoreboard = Scoreboard();
 
+// Interval placeholder
+let interval;
+
 // Initialize app
 const init = () => {
   // Add event listeners
@@ -24,14 +27,14 @@ const startGame = () => {
   settings.setSettings(ui.parseSettings());
 
   // Run timer, increment state every second
-  let gameSettings = settings.getSettings();
-  let interval = window.setInterval(() => {
-    game.incrementTimer(gameSettings.length, interval, () => gameIsOver());
-    ui.displayTimer(gameSettings.length - game.getState().timeElapsed);
+  let length = settings.getSettings().length;
+  interval = window.setInterval(() => {
+    game.incrementTimer(length, interval, () => gameIsOver());
+    ui.displayTimer(length - game.getState().timeElapsed, length);
   }, 1000);
 
   // Tell UI to open game modal
-  ui.setupModal(() => { gameIsQuitEarly(interval) });
+  ui.setupModal(() => { gameIsQuitEarly() });
 
   // Set up answer event listener
   ui.setupSolveEventListener(() => checkAnswer(ui.getAnswer()));
@@ -41,7 +44,7 @@ const startGame = () => {
 
 }
 
-const gameIsQuitEarly = (interval) => {
+const gameIsQuitEarly = () => {
   // Modal is closed
   clearInterval(interval);
   game.setState('state', 0);
@@ -50,9 +53,15 @@ const gameIsQuitEarly = (interval) => {
   // Reset game
   game.resetState();
 
+  // Reset timer
+  ui.resetTimerBar();
+
 }
 
 const gameIsOver = () => {
+  // Clear interval
+  clearInterval(interval);
+
   // Get game stats
   let gameStats = game.getState();
 
@@ -65,14 +74,19 @@ const gameIsOver = () => {
   game.setState('state', 0);
   game.resetState();
 
+  // Reset timer
+  ui.resetTimerBar();
+
   // Update Scoreboard
   let date = new Date();
+  let gameSettings = settings.getSettings();
   let score = {
     date: `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`,
     type: settings.getPrettyType(),
     correct: gameStats.correct,
     percentage: corrPercentage,
-    focusNum: settings.getSettings().focus
+    focusNum: gameSettings.focus,
+    length: gameSettings.length
   }
   let scores = scoreboard.addScore(score);
   ui.updateScoreboard(scores);

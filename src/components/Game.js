@@ -22,14 +22,16 @@ const Game = () => {
   const _generateProblem = (focusNum, type, max) => {
     // TODO: Allow user to choose max num
     if (type === '+') {
-      state.currNum1 = focusNum !== -1 ? focusNum : getRand(addSub.length);
-      state.currNum2 = getRand(20 - state.currNum2);
+      let num1 = focusNum !== -1 ? focusNum : getRand(9);
+      let num2 = getRand(20 - num1);
+      state.currNum1 = Math.max(num1, num2);
+      state.currNum2 = Math.min(num1, num2);
 
       state.currAnswer = state.currNum1 + state.currNum2;
       return [state.currNum1, state.currNum2, state.currAnswer];
 
     } else if (type === '-') {
-      let num1 = focusNum !== -1 ? focusNum : getRand(sub.length);
+      let num1 = focusNum !== -1 ? focusNum : getRand(9);
       let num2 = getRand(20 - num1);
       state.currNum1 = Math.max(num1, num2);
       state.currNum2 = Math.min(num1, num2);
@@ -37,8 +39,10 @@ const Game = () => {
       state.currAnswer = state.currNum1 - state.currNum2;
       return [state.currNum1, state.currNum2, state.currAnswer];
     } else if (type === '*') {
-      state.currNum1 = focusNum !== -1 ? focusNum : getRand(12);
-      state.currNum2 = getRand(12);
+      let num1 = focusNum !== -1 ? focusNum : getRand(12);
+      let num2 = getRand(12);
+      state.currNum1 = Math.max(num1, num2);
+      state.currNum2 = Math.min(num1, num2);
 
       state.currAnswer = state.currNum1 * state.currNum2;
       return [state.currNum1, state.currNum2, state.currAnswer];
@@ -60,7 +64,6 @@ const Game = () => {
     getState: () => state,
     setState: (prop, val) => {
       state[prop] = val;
-      console.log(`${prop} set to ${val}`, state[prop])
     },
     getNums: (focusNum, maxNum) => [focusNum, maxNum],
     incrementCorrect: () => state.correct++,

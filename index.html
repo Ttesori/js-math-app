@@ -10,17 +10,91 @@
   <style>
     .mc-game-modal, .hide {
       display:none;
+    } 
+    .mc-game-modal {
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:rgba(0,0,0,.7);
+    }
+
+    .mc-game-container {
+      background:#fff;
+      padding:2rem;
+      position:absolute;
+      width:600px;
+      max-width:85%;
+      left:50%;
+      top:50%;
+      transform: translate(-50%, -50%);
     }
 
     .active {
       display:block !important;
     }
 
-    .mc-game-problem { display:flex}
+    .mc-btn-close {
+      position:absolute;
+      top:.5rem;
+      right:.5rem;
+      color:#666;
+      text-decoration: none;
+    }
+
+    .mc-game-problem { 
+      display:flex;
+      justify-content: center;
+    }
+
+    .mc-game-problem div {
+      padding:.5rem;
+      font-size:2rem;
+    }
+
+    .mc-game-feedback {
+      font-size:1.25rem;
+      font-style:italic;
+      padding:.5rem;
+      text-align:center;
+    }
 
     .mc-scoreboard td {
       text-align: center;
     }
+
+    .mc-game-timer {
+  font-size: 1.3rem;
+  position: relative;
+  background: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.mc-game-timer-bar {
+  background: #03a9f4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  border-radius: 5px;
+  transition: width 1s linear;
+}
+
+.mc-game-timer-text {
+  z-index: 1;
+  position: relative;
+  display: block;
+  padding: 0.25rem;
+}
+
+.mc-game-btn-stop {
+  margin-top:1rem auto;
+}
   </style>
 </head>
 <body>
@@ -73,22 +147,29 @@
 
   <section class="mc-scoreboard-container">
     <h2>My Scoreboard</h2>
-    <div class="mc-scoreboard"></div>
+    <div class="mc-scoreboard">
+      Play some games to add scores here!
+    </div>
   </section>
 
   <section class="mc-game-modal">
-    <h3>Game Area</h3>
-    <section class="mc-game-problem">
-      <div class="mc-game-problem-1"></div>
-      <div class="mc-game-problem-type"></div>
-      <div class="mc-game-problem-2"></div>
-      <div class="mc-game-problem-equals">=</div>
-      <input type="number" class="mc-game-answer">
-      <div class="mc-game-feedback"></div>
-      <div class="mc-game-timer"></div>
-      
-    </section>
-    <button class="mc-btn-stop">Stop Game</button>
+    <div class="mc-game-container">
+      <a href="#" class="mc-btn-close">X</a>
+      <section class="mc-game-problem">
+        <div class="mc-game-problem-1">1</div>
+        <div class="mc-game-problem-type">+</div>
+        <div class="mc-game-problem-2">1</div>
+        <div class="mc-game-problem-equals">=</div>
+        <input type="number" class="mc-game-answer">
+      </section>
+      <div class="mc-game-feedback">This is some feedback</div>
+      <div class="mc-game-timer">
+        <span class="mc-game-timer-bar"></span>
+        <span class="mc-game-timer-text">Ready...set...GO!</span>
+      </div>
+      <button class="mc-btn-stop">Stop Game</button>
+    </div>
+    
   </section>
   
   <script type="module" src="src/app.js"></script>
