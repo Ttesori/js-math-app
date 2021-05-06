@@ -24,10 +24,10 @@ const startGame = () => {
   settings.setSettings(ui.parseSettings());
 
   // Run timer, increment state every second
-  let gameLength = settings.getSettings().length;
+  let gameSettings = settings.getSettings();
   let interval = window.setInterval(() => {
-    game.incrementTimer(gameLength, interval, () => gameIsOver());
-    ui.displayTimer(game.getState().timeElapsed);
+    game.incrementTimer(gameSettings.length, interval, () => gameIsOver());
+    ui.displayTimer(gameSettings.length - game.getState().timeElapsed);
   }, 1000);
 
   // Tell UI to open game modal
@@ -69,9 +69,10 @@ const gameIsOver = () => {
   let date = new Date();
   let score = {
     date: `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`,
-    type: settings.getSettings().type,
+    type: settings.getPrettyType(),
     correct: gameStats.correct,
-    percentage: corrPercentage
+    percentage: corrPercentage,
+    focusNum: settings.getSettings().focus
   }
   let scores = scoreboard.addScore(score);
   ui.updateScoreboard(scores);

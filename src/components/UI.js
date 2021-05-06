@@ -111,7 +111,10 @@ const UI = () => {
   const _showProblem = (problem, type) => {
     gameEl.gameProblem1El.textContent = problem[0];
     gameEl.gameProblem2El.textContent = problem[1];
-    gameEl.gameProblemTypeEl.textContent = type;
+    let prettyType = type;
+    if (prettyType === '*') prettyType = 'x';
+    if (prettyType === '/') prettyType = '&divide;'
+    gameEl.gameProblemTypeEl.innerHTML = prettyType;
     console.log(problem[2])
   }
 
@@ -143,12 +146,19 @@ const UI = () => {
 
   const _updateScoreboard = (scores) => {
     const scoresEls = scores.map((score) => `
-    <tr><td>${score.date}</td><td>${score.type}</td><td>${score.correct}</td><td> ${score.percentage}%</td></tr>`);
+    <tr>
+    <td>${score.date}</td>
+    <td>${score.type}</td>
+    <td>${score.focusNum}</td>
+    <td>${score.correct}</td>
+    <td> ${score.percentage}%</td>
+    </tr>`);
     scoresEl.scoreEl.innerHTML = `
     <table>
     <tr>
     <th>Date</th>
     <th>Game Type</th>
+    <th>Focus Number</th>
     <th># Correct</th>
     <th>% Correct</th>
     </tr>

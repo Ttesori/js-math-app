@@ -6,14 +6,30 @@ const Settings = () => {
     length: 0
   }
 
-  const parseSettings = (settingsIn) => {
+  const _parseSettings = (settingsIn) => {
     settings = { ...settingsIn };
     console.log('Settings updated...', settings);
   }
 
+  const _getPrettyType = () => {
+    switch (settings.type) {
+      case '+':
+        return 'Addition';
+      case '-':
+        return 'Subtraction';
+      case '/':
+        return 'Division';
+      case '*':
+        return 'Multiplication';
+      default:
+        break;
+    }
+  }
+
   return {
     getSettings: () => settings,
-    setSettings: (settings) => parseSettings(settings)
+    setSettings: (settings) => _parseSettings(settings),
+    getPrettyType: () => _getPrettyType()
   }
 }
 
