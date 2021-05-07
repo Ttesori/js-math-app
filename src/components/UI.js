@@ -26,7 +26,8 @@ const UI = () => {
   }
 
   const scoresEl = {
-    scoreEl: document.querySelector('.mc-scoreboard')
+    scoreEl: document.querySelector('.mc-scoreboard'),
+    scorebtnClearEl: document.querySelector('.mc-scoreboard-btn-clear')
   }
 
   const init = () => {
@@ -157,7 +158,14 @@ const UI = () => {
     gameEl.gameBtnStopEl.textContent = 'Close Window';
   }
 
-  const _updateScoreboard = (scores) => {
+  const _updateScoreboard = (scores, callback) => {
+    if (scores.length === 0) {
+      // hide clear scores button
+      scoresEl.scorebtnClearEl.classList.add('hide');
+      scoresEl.scoreEl.innerHTML = 'Play some games to add scores here!';
+      return false;
+    }
+
     const scoresEls = scores.map((score) => `
     <tr>
     <td>${score.date}</td>
@@ -181,6 +189,13 @@ const UI = () => {
     ${scoresEls.join('')}
     </table>
     `;
+    if (callback) {
+      scoresEl.scorebtnClearEl.classList.remove('hide');
+      scoresEl.scorebtnClearEl.addEventListener('click', () => callback());
+    }
+
+
+
   }
 
   init()
@@ -204,7 +219,7 @@ const UI = () => {
     displayFeedback: (isCorrect, msg) => _displayFeedback(isCorrect, msg),
     displayTimer: (seconds, length) => _displayTimer(seconds, length),
     hideGameEls: () => _hideGameEls(),
-    updateScoreboard: (scores) => _updateScoreboard(scores),
+    updateScoreboard: (scores, callback) => _updateScoreboard(scores, callback),
     resetTimerBar: () => gameEl.gameTimerBarEl.setAttribute('style', `width:100%;`)
   }
 

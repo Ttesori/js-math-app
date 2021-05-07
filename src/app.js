@@ -17,8 +17,9 @@ const init = () => {
   // Add event listeners
   ui.setupStartEventListener(startGame);
 
-  // TODO: Load Settings if saved in LS
-  // TODO: Load scoreboard if saved in LS
+  // Load scoreboard if saved in LS
+  let scores = scoreboard.loadScores();
+  ui.updateScoreboard(scores, clearScores);
 }
 
 // What to do when Start Game button is clicked
@@ -47,7 +48,6 @@ const startGame = () => {
 const gameIsQuitEarly = () => {
   // Modal is closed
   clearInterval(interval);
-  game.setState('state', 0);
   ui.closeModal();
 
   // Reset game
@@ -89,7 +89,8 @@ const gameIsOver = () => {
     length: gameSettings.length
   }
   let scores = scoreboard.addScore(score);
-  ui.updateScoreboard(scores);
+  ui.updateScoreboard(scores, clearScores);
+  scoreboard.saveScores();
 }
 
 const runGame = () => {
@@ -114,6 +115,11 @@ const checkAnswer = (answer) => {
   // Reset answer
   ui.resetAnswer();
   runGame();
+}
+
+const clearScores = () => {
+  scoreboard.clearScores();
+  ui.updateScoreboard([]);
 }
 
 init();

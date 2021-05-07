@@ -8,7 +8,6 @@ const Settings = () => {
 
   const _parseSettings = (settingsIn) => {
     settings = { ...settingsIn };
-    console.log('Settings updated...', settings);
   }
 
   const _getPrettyType = () => {
