@@ -1,0 +1,93 @@
+:root {
+  --bs-primary: #2AA7B6;
+  --bs-secondary: #9FCD60;
+  --bs-dark: #303E5C;
+}
+
+.mc-game-modal,
+.hide {
+  display: none;
+}
+
+.container-lg {
+  padding:0 2rem;
+}
+
+.mc-game-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .7);
+}
+
+.mc-game-container {
+  background: #fff;
+  padding: 2rem;
+  position: absolute;
+  width: 600px;
+  max-width: 85%;
+  left: 50%;
+  top: 50%;
+  border-radius:.5rem;
+  transform: translate(-50%, -50%);
+}
+
+.active {
+  display: block !important;
+}
+
+.mc-btn-close {
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.mc-game-problem {
+  display: flex;
+  justify-content: center;
+}
+
+.mc-game-problem div {
+  padding: .5rem;
+  font-size: 2rem;
+}
+
+.mc-game-answer {
+  border:1px solid #aaa;
+  outline:0;
+  border-radius:3px;
+  max-width:125px;
+  font-size:2rem;
+  padding:.25rem .25rem .25rem 1rem;
+}
+
+.mc-game-feedback {
+  font-size: 1rem;
+  font-style: italic;
+  padding: .5rem;
+  text-align: center;
+}
+
+.mc-scoreboard td {
+  text-align: center;
+}
+
+.mc-game-timer-bar {
+  transition: width 1s linear;
+}
+.progress {
+  height:1.5rem;
+}
+
+.mc-game-timer-text {
+  padding:1rem;
+}
+
+.mc-btn-stop {
+  display:block;
+  margin:1rem auto 0;
+}

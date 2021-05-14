@@ -177,7 +177,7 @@ const UI = () => {
     </tr>`);
 
     scoresEl.scoreEl.innerHTML = `
-    <table>
+    <table class="table text-light">
     <tr>
     <th>Date</th>
     <th>Game Type</th>
@@ -193,9 +193,6 @@ const UI = () => {
       scoresEl.scorebtnClearEl.classList.remove('hide');
       scoresEl.scorebtnClearEl.addEventListener('click', () => callback());
     }
-
-
-
   }
 
   init()

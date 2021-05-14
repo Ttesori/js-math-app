@@ -8,166 +8,80 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/main.css">
   <title>MathChamp</title>
 
   <style>
-    .mc-game-modal,
-    .hide {
-      display: none;
-    }
-
-    .mc-game-modal {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, .7);
-    }
-
-    .mc-game-container {
-      background: #fff;
-      padding: 2rem;
-      position: absolute;
-      width: 600px;
-      max-width: 85%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .active {
-      display: block !important;
-    }
-
-    .mc-btn-close {
-      position: absolute;
-      top: .5rem;
-      right: .5rem;
-      color: #666;
-      text-decoration: none;
-    }
-
-    .mc-game-problem {
-      display: flex;
-      justify-content: center;
-    }
-
-    .mc-game-problem div {
-      padding: .5rem;
-      font-size: 2rem;
-    }
-
-    .mc-game-feedback {
-      font-size: 1.25rem;
-      font-style: italic;
-      padding: .5rem;
-      text-align: center;
-    }
-
-    .mc-scoreboard td {
-      text-align: center;
-    }
-
-    .mc-game-timer {
-      font-size: 1.3rem;
-      position: relative;
-      background: #fff;
-      max-width: 600px;
-      margin: 0 auto;
-      border-radius: 5px;
-    }
-
-    .mc-game-timer-bar {
-      background: #03a9f4;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      z-index: 0;
-      border-radius: 5px;
-      transition: width 1s linear;
-    }
-
-    .mc-game-timer-text {
-      z-index: 1;
-      position: relative;
-      display: block;
-      padding: 0.25rem;
-    }
-
-    .mc-game-btn-stop {
-      margin-top: 1rem auto;
-    }
+ 
   </style>
 </head>
-<header class="navbar navbar-light bg-light mb-3">
-  <nav class="container">
+<header class="navbar navbar-light bg-light">
+  <nav class="container-lg">
       <h1 class="navbar-brand">MathChamp</h1>
       <div class="text-end fst-italic">Play Games. Practice Facts. Become a Champ!</div>   
   </nav>
 </header>
-<main class="container mb-5 pt-5">
+<main class="container-lg mb-5 pt-4">
   <article>
     <h1>Become A Math Facts Champ!</h1>
     <p>Choose your settings below to start playing!</p>
   </article>
   <div class="row gx-5 align-items-center">
-    <section class="mc-settings col">
-      <h2>Start New Game</h2>
-      <div class="mb-3">
-        <label class="form-label">I want to practice...</label>
-        <select class="mc-settings-type form-select">
-          <option value="+">Addition</option>
-          <option value="-">Subtraction</option>
-          <option value="*">Multiplication</option>
-          <option value="/">Division</option>
-        </select>
-      </div>
-       
-      <label class="form-label">I want to focus on <span class="mc-settings-type-verb">adding</span> the number...</label>
-      <div class="mb-3 row">
-        <div class="col-4">
-          <select class="mc-settings-focus form-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
+    <section class="mc-settings col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2>Start New Game</h2>
+          <div class="mb-3">
+            <label class="form-label">I want to practice...</label>
+            <select class="mc-settings-type form-select">
+              <option value="+">Addition</option>
+              <option value="-">Subtraction</option>
+              <option value="*">Multiplication</option>
+              <option value="/">Division</option>
+            </select>
+          </div>
+          <label class="form-label">I want to focus on <span class="mc-settings-type-verb">adding</span> the number...</label>
+          <div class="mb-3 row">
+            <div class="col-4">
+              <select class="mc-settings-focus form-select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <div class="col-2"> 
+              <span class="mc-settings-or">OR</span>
+            </div>
+            <div class="col-6 form-check form-switch"> 
+              <label class="form-check-label">Challenge Mode: Mix It Up!</label>
+              <input type="checkbox" class="mc-settings-mixed form-check-input">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">I want to practice for...</label>
+            <select class="mc-settings-length form-select">
+              <option value="30">30 seconds</option>
+              <option value="60">60 seconds</option>
+              <option value="90">90 seconds</option>
+              <option value="120">120 seconds</option>
+            </select>
+          </div>
+          <button id="mc-settings-btn" class="btn btn-primary">
+            Start Game <i class="bi bi-play-circle-fill"></i>
+          </button>
         </div>
-        <div class="col-2"> 
-          <span class="mc-settings-or">OR</span>
-        </div>
-        <div class="col-6 form-check form-switch"> 
-          <label class="form-check-label">Challenge Mode: Mix It Up!</label>
-          <input type="checkbox" class="mc-settings-mixed form-check-input">
-        </div>
-        
       </div>
-     
-      <div class="mb-3">
-        <label class="form-label">I want to practice for...</label>
-        <select class="mc-settings-length form-select">
-          <option value="30">30 seconds</option>
-          <option value="60">60 seconds</option>
-          <option value="90">90 seconds</option>
-          <option value="120">120 seconds</option>
-        </select>
-      </div>
-
-      <button id="mc-settings-btn" class="btn btn-primary">
-        Start Game <i class="bi bi-play-circle-fill"></i>
-      </button>
+      
     </section>
 
-    <div class="col">
+    <div class="col-md-6 pt-4">
       <h1>[adorbs cartoon]</h1>
       <p>The best way to get better at math facts is to practice, practice, practice — and this game makes it fun! Decide what kind of game you’d like to play, do your best, then check your scores below to see how you get better over time. Once the game starts getting too easy, practice for a shorter amount of time or with higher numbers — you’ll be a math facts champion in no time!</p>
     </div>
@@ -176,11 +90,11 @@
 
 <section class="mc-scoreboard-container border-top bg-secondary text-white pt-5 pb-5">
   <div class="container">
-    <h2>My Scoreboard</h2>
+    <h2 class="text-center">My Scoreboard</h2>
     <div class="mc-scoreboard">
       Play some games to add scores here!
     </div>
-    <button class="mc-scoreboard-btn-clear">Clear Scores</button>
+    <button class="mc-scoreboard-btn-clear btn btn-outline-light d-block mx-auto">Clear Scores</button>
   </div>
   
 </section>
@@ -200,11 +114,13 @@
       <input type="number" class="mc-game-answer">
     </section>
     <div class="mc-game-feedback">This is some feedback</div>
-    <div class="mc-game-timer">
-      <span class="mc-game-timer-bar"></span>
-      <span class="mc-game-timer-text">Ready...set...GO!</span>
+    <div class="progress mc-game-timer">
+      <span class="mc-game-timer-bar progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar">
+        <span class="mc-game-timer-text">Ready...set...GO!</span>
+      </span>
+      
     </div>
-    <button class="mc-btn-stop">Stop Game</button>
+    <button class="mc-btn-stop btn btn-sm btn-outline-danger">Stop Game</button>
   </div>
 </section>
 
