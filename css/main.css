@@ -42,6 +42,10 @@ hr.mc-header-line {
   font-size:1.5rem;
 }
 
+.mc-settings-btn {
+
+}
+
 .mc-settings input, .mc-settings select, .mc-settings label {
   color: var(--bs-dark);
 }
@@ -111,6 +115,7 @@ hr.mc-header-line {
   left: 0;
   right: 0;
   bottom: 0;
+  height:100vh;
   background: rgba(0, 0, 0, .7);
 }
 
@@ -181,7 +186,9 @@ hr.mc-header-line {
 
 .mc-game-timer-bar {
   transition: width 1s linear;
+  width:100%
 }
+
 .progress {
   height:1.5rem;
 }

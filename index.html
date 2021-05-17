@@ -28,8 +28,8 @@
   <div class="row gx-5">
     <section class="mc-settings col-md-6">
       <div class="card">
-        <div class="card-body">
-          <h2>Start New Game</h2>
+        <div class="card-body pt-4 pb-5">
+          <h2 class="mb-3">Start New Game</h2>
           <div class="mb-3">
             <label class="form-label">I want to practice...</label>
             <select class="mc-settings-type form-select">
@@ -41,7 +41,7 @@
           </div>
           <label class="form-label">I want to focus on <span class="mc-settings-type-verb">adding</span> the
             number...</label>
-          <div class="mb-3 row">
+          <div class="mb-3 row align-items-center">
             <div class="col-4">
               <select class="mc-settings-focus form-select">
                 <option value="1">1</option>
@@ -64,18 +64,22 @@
               <input type="checkbox" class="mc-settings-mixed form-check-input">
             </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label">I want to practice for...</label>
-            <select class="mc-settings-length form-select">
-              <option value="30">30 seconds</option>
-              <option value="60">60 seconds</option>
-              <option value="90">90 seconds</option>
-              <option value="120">120 seconds</option>
-            </select>
+          <div class="row align-items-end">
+            <div class="col-6">
+              <label class="form-label">I want to practice for...</label>
+              <select class="mc-settings-length form-select">
+                <option value="30">30 seconds</option>
+                <option value="60">60 seconds</option>
+                <option value="90">90 seconds</option>
+                <option value="120">120 seconds</option>
+              </select>
+            </div>
+            <div class="col-6 text-center"><button id="mc-settings-btn" class="btn btn-primary">
+                Start Game <i class="bi bi-play-fill"></i>
+              </button></div>
           </div>
-          <button id="mc-settings-btn" class="btn btn-primary">
-            Start Game <i class="bi bi-play-circle-fill"></i>
-          </button>
+
+
         </div>
       </div>
 

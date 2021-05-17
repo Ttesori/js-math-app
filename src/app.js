@@ -86,7 +86,8 @@ const gameIsOver = () => {
     correct: gameStats.correct,
     percentage: corrPercentage,
     focusNum: gameSettings.focus,
-    length: gameSettings.length
+    length: gameSettings.length,
+    secAns: (gameSettings.length / (gameStats.correct + gameStats.incorrect)).toFixed(1)
   }
   let scores = scoreboard.addScore(score);
   ui.updateScoreboard(scores, clearScores);

@@ -170,10 +170,11 @@ const UI = () => {
     <tr>
     <td>${score.date}</td>
     <td>${score.type}</td>
-    <td>${score.length}</td>
+    <td>${score.length} seconds</td>
     <td>${score.focusNum}</td>
     <td>${score.correct}</td>
     <td> ${score.percentage}%</td>
+    <td>${score.secAns}</td>
     </tr>`);
 
     scoresEl.scoreEl.innerHTML = `
@@ -181,10 +182,11 @@ const UI = () => {
     <tr>
     <th>Date</th>
     <th>Game Type</th>
-    <th>Game Length</th>
-    <th>Focus Number</th>
+    <th>Length</th>
+    <th>Focus Num.</th>
     <th># Correct</th>
     <th>% Correct</th>
+    <th>Sec/Answer</th>
     </tr>
     ${scoresEls.join('')}
     </table>
