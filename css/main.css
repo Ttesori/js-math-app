@@ -2,6 +2,78 @@
   --bs-primary: #2AA7B6;
   --bs-secondary: #9FCD60;
   --bs-dark: #303E5C;
+  --bs-font: 'Roboto Slab',serif;
+}
+
+body {
+  color: var(--bs-dark)
+}
+
+h1, h2 {
+  font-family: var(--bs-font);
+  font-weight: 600;
+}
+
+main h1 {
+  color: var(--bs-primary);
+}
+
+main h2 {
+  color: var(--bs-secondary);
+}
+
+.mc-settings h2 {
+  font-size:1.5rem;
+}
+
+.mc-settings input, .mc-settings select, .mc-settings label {
+  color: var(--bs-dark);
+}
+
+.mc-settings-or {
+  display:block;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--bs-secondary);
+  border:0;
+  font-family: var(--bs-font);
+}
+
+.mc-header h1, .mc-scoreboard h2 {
+  color: #fff;
+} 
+
+.mc-header {
+  background: var(--bs-dark);
+  border-bottom:4px solid var(--bs-secondary)
+}
+
+.mc-intro p strong {
+  color:var(--bs-primary);
+  font-family: var(--bs-font);
+}
+
+.mc-intro img {
+  max-width:400px;
+  display:block;
+  margin:0 auto;
+}
+
+.mc-logo img {
+  padding-right:10px;
+  margin-top:-5px;
+}
+
+.mc-logo span {
+  font-size:1.5rem;
+  display:inline-block;
+  margin-top:10px;
+}
+
+.mc-settings h2 {
+  text-align: center;
 }
 
 .mc-game-modal,
@@ -72,6 +144,11 @@
   text-align: center;
 }
 
+.mc-scoreboard-container {
+  border-top:4px solid var(--bs-secondary);
+  background:var(--bs-primary)
+}
+
 .mc-scoreboard td {
   text-align: center;
 }
@@ -90,4 +167,14 @@
 .mc-btn-stop {
   display:block;
   margin:1rem auto 0;
+}
+
+.mc-footer {
+  border-top:2px solid var(--bs-secondary);
+  background:var(--bs-dark);
+  font-family: var(--bs-font);
+}
+
+.mc-footer a {
+  color:var(--bs-secondary);
 }
