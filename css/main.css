@@ -173,6 +173,12 @@ hr.mc-header-line {
   text-align: center;
 }
 
+.mc-scoreboard th {
+  font-family: var(--bs-font);
+  font-weight:600;
+  text-align: center;
+}
+
 .mc-game-timer-bar {
   transition: width 1s linear;
 }
