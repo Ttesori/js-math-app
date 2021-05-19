@@ -197,6 +197,11 @@ const UI = () => {
     }
   }
 
+  const _closeModal = () => {
+    gameEl.gameModalEl.classList.remove('active');
+    gameEl.gameAnswerEl.value = '';
+  }
+
   init()
 
   return {
@@ -210,7 +215,7 @@ const UI = () => {
       }
     },
     setupModal: (callback) => _setupModal(callback),
-    closeModal: () => gameEl.gameModalEl.classList.remove('active'),
+    closeModal: () => _closeModal(),
     showProblem: (problem, type) => _showProblem(problem, type),
     setupSolveEventListener: (callback) => _setupSolveEventListener(callback),
     getAnswer: () => parseInt(gameEl.gameAnswerEl.value),
