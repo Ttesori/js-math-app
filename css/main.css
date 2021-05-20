@@ -110,7 +110,7 @@ hr.mc-header-line {
 }
 
 .mc-game-modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
