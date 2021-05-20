@@ -62,8 +62,6 @@ const UI = () => {
     // Removed mixed checked if checkced
     if (settingsEl.settingMixedEl.checked) settingsEl.settingMixedEl.checked = false;
 
-
-
     switch (type) {
       case '+':
         settingsEl.settingTypeVerbEl.innerHTML = 'adding';
@@ -76,7 +74,6 @@ const UI = () => {
         // focus num list goes to 10
         settingsEl.settingTypeVerbEl.innerHTML = 'subtracting';
         settingsEl.settingFocusEl.innerHTML = addHTML;
-        // TODO: Edit focus nums depending on game type
         break;
       case '*':
         // focus num list goes to 12
@@ -162,6 +159,7 @@ const UI = () => {
     if (scores.length === 0) {
       // hide clear scores button
       scoresEl.scorebtnClearEl.classList.add('hide');
+      scoresEl.scoreEl.classList.add('mc-no-scores');
       scoresEl.scoreEl.innerHTML = 'Play some games to add scores here!';
       return false;
     }
@@ -193,6 +191,7 @@ const UI = () => {
     `;
     if (callback) {
       scoresEl.scorebtnClearEl.classList.remove('hide');
+      scoresEl.scoreEl.classList.remove('mc-no-scores');
       scoresEl.scorebtnClearEl.addEventListener('click', () => callback());
     }
   }

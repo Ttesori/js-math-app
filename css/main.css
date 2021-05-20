@@ -73,6 +73,12 @@ hr.mc-header-line {
   background: var(--bs-dark);
   position:relative;
 }
+@media screen and (min-width: 768px) {
+  .mc-intro {
+    margin-top: -2rem;
+  }
+}
+
 
 .mc-intro p strong {
   color:var(--bs-primary);
@@ -102,7 +108,7 @@ hr.mc-header-line {
 
 .mc-game-modal,
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .container-lg {
@@ -172,6 +178,7 @@ hr.mc-header-line {
 .mc-scoreboard-container {
   background:var(--bs-primary);
   position:relative;
+  text-align: center;
 }
 
 .mc-scoreboard td {
@@ -182,6 +189,18 @@ hr.mc-header-line {
   font-family: var(--bs-font);
   font-weight:600;
   text-align: center;
+}
+
+.mc-no-scores {
+  font-style: italic;
+  font-family: var(--bs-font);
+  font-size:1.2rem;
+  color: rgba(255, 255, 255, .5)!important;
+  border:3px dashed rgba(255, 255, 255, .25);
+  border-radius:1rem;
+  padding:1rem;
+  max-width:500px;
+  margin: 1.5rem auto 0;
 }
 
 .mc-game-timer-bar {
