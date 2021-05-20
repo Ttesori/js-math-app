@@ -111,7 +111,7 @@ const checkAnswer = (answer) => {
     ui.displayFeedback(1, 'Correct! Great job!');
   } else {
     game.incrementIncorrect();
-    ui.displayFeedback(0, `Good try! The correct answer was: ${answer}`);
+    ui.displayFeedback(0, `Good try! The correct answer was: ${state.currAnswer}`);
   }
   // Reset answer
   ui.resetAnswer();
