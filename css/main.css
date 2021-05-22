@@ -2,6 +2,7 @@
   --bs-primary: #2AA7B6;
   --bs-secondary: #9FCD60;
   --bs-dark: #303E5C;
+  --bs-light:#F4FBFB;
   --bs-font: 'Roboto Slab',serif;
 }
 
@@ -34,16 +35,17 @@ hr.mc-header-line {
   margin:0;
 }
 
+.mc-header .navbar {
+  padding-left:2rem;
+  padding-right:2rem;
+}
+
 .mc-scoreboard-container hr.mc-header-line {
   top:-8px;
 }
 
 .mc-settings h2 {
   font-size:1.5rem;
-}
-
-.mc-settings-btn {
-
 }
 
 .mc-settings input, .mc-settings select, .mc-settings label {
@@ -57,6 +59,11 @@ hr.mc-header-line {
 
 .mc-slogan {
   font-family: var(--bs-font);
+}
+
+.mc-settings .btn-primary {
+  font-size:1.1rem;
+  padding:.5rem 1rem;
 }
 
 .btn-primary {
@@ -135,6 +142,7 @@ hr.mc-header-line {
   top: 50%;
   border-radius:.5rem;
   transform: translate(-50%, -50%);
+  box-shadow:0px 0px 1rem rgba(0,0,0,.5)
 }
 
 .active {
@@ -155,24 +163,33 @@ hr.mc-header-line {
 }
 
 .mc-game-problem div {
-  padding: .5rem;
-  font-size: 2rem;
+  padding: .5rem .75rem;
+  font-size: 3rem;
+  font-family:var(--bs-font);
+  color:var(--bs-primary);
+}
+
+ div.mc-game-problem-equals {
+  color:var(--bs-secondary);
 }
 
 .mc-game-answer {
-  border:1px solid #aaa;
+  border:1px solid var(--bs-secondary);
   outline:0;
   border-radius:3px;
   max-width:125px;
-  font-size:2rem;
+  font-size:2.5rem;
+  margin-left:1rem;
   padding:.25rem .25rem .25rem 1rem;
+  background:var(--bs-light);
 }
 
 .mc-game-feedback {
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-style: italic;
-  padding: .5rem;
+  padding: 1rem .5rem;
   text-align: center;
+  color:var(--bs-secondary);
 }
 
 .mc-scoreboard-container {
@@ -198,7 +215,7 @@ hr.mc-header-line {
   color: rgba(255, 255, 255, .5)!important;
   border:3px dashed rgba(255, 255, 255, .25);
   border-radius:1rem;
-  padding:1rem;
+  padding:1.25rem 1.5rem;
   max-width:500px;
   margin: 1.5rem auto 0;
 }
@@ -209,10 +226,11 @@ hr.mc-header-line {
 }
 
 .progress {
-  height:1.5rem;
+  height:2rem;
 }
 
 .mc-game-timer-text {
+  font-size:1rem;
   padding:1rem;
 }
 
@@ -236,4 +254,28 @@ hr.mc-header-line {
   border:1px solid var(--bs-secondary);
   top:-8px;
   width:100%;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    font-size:20px;
+  }
+
+  .mc-header {
+    padding-bottom:1rem;
+  }
+
+  .mc-logo span {
+    font-size:2rem;
+    padding-left:10px;
+  }
+
+  .mc-logo img {
+    width:75px;
+    margin-top:-15px;
+  }
+
+  .mc-no-scores {
+    font-size:1rem;
+  }
 }
