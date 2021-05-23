@@ -44,8 +44,13 @@ hr.mc-header-line {
   top:-8px;
 }
 
+.mc-settings .card-body {
+  padding:1.75rem 1.25rem 2.25rem;
+  box-shadow:0px 0px .75rem #eee;
+}
+
 .mc-settings h2 {
-  font-size:1.5rem;
+  font-size:1.6rem;
 }
 
 .mc-settings input, .mc-settings select, .mc-settings label {
@@ -55,6 +60,28 @@ hr.mc-header-line {
 .mc-settings-or {
   display:block;
   text-align: center;
+  font-weight:bold;
+}
+
+.mc-settings .form-check-input:checked {
+  background-color:var(--bs-secondary);
+  border-color:var(--bs-secondary);
+}
+
+.mc-settings .form-check-input:focus {
+  border-color:#ccc;
+  box-shadow:0 0 0 .25rem #eee;
+}
+
+.mc-settings select {
+  background-color:var(--bs-light);
+}
+
+.mc-settings .form-check-input {
+  background-color:var(--bs-light);
+}
+.mc-settings label, .mc-settings-or {
+  font-family:var(--bs-font);
 }
 
 .mc-slogan {
@@ -64,6 +91,10 @@ hr.mc-header-line {
 .mc-settings .btn-primary {
   font-size:1.1rem;
   padding:.5rem 1rem;
+}
+
+.mc-settings .btn-primary:hover {
+  background-color: var(--bs-primary);
 }
 
 .btn-primary {
@@ -123,7 +154,7 @@ hr.mc-header-line {
 }
 
 .mc-game-modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -142,7 +173,8 @@ hr.mc-header-line {
   top: 50%;
   border-radius:.5rem;
   transform: translate(-50%, -50%);
-  box-shadow:0px 0px 1rem rgba(0,0,0,.5)
+  border:4px solid var(--bs-secondary);
+  box-shadow:0px 0px 2rem rgba(0,0,0,.5)
 }
 
 .active {
@@ -164,7 +196,7 @@ hr.mc-header-line {
 
 .mc-game-problem div {
   padding: .5rem .75rem;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-family:var(--bs-font);
   color:var(--bs-primary);
 }
@@ -178,10 +210,13 @@ hr.mc-header-line {
   outline:0;
   border-radius:3px;
   max-width:125px;
-  font-size:2.5rem;
+  font-size:3rem;
   margin-left:1rem;
   padding:.25rem .25rem .25rem 1rem;
   background:var(--bs-light);
+  color:var(--bs-dark);
+  font-family: var(--bs-font);
+  text-align: center;
 }
 
 .mc-game-feedback {
@@ -189,23 +224,30 @@ hr.mc-header-line {
   font-style: italic;
   padding: 1rem .5rem;
   text-align: center;
-  color:var(--bs-secondary);
+  color:var(--bs-dark);
 }
 
 .mc-scoreboard-container {
   background:var(--bs-primary);
   position:relative;
   text-align: center;
+  padding:2rem 0 3rem;
 }
 
 .mc-scoreboard td {
   text-align: center;
+  border-bottom-color: rgba(255, 255,255, .3);
+}
+
+.mc-scoreboard tr:nth-child(odd) td {
+  background-color: rgba(255, 255,255, .1);
 }
 
 .mc-scoreboard th {
   font-family: var(--bs-font);
   font-weight:600;
   text-align: center;
+  border-bottom-color: rgba(255, 255, 255, .5);
 }
 
 .mc-no-scores {
@@ -220,9 +262,16 @@ hr.mc-header-line {
   margin: 1.5rem auto 0;
 }
 
+.mc-scoreboard-btn-clear {
+  border-color:rgba(255, 255, 255, .5);
+  color:rgba(255, 255, 255, .9);
+  font-family:var(--bs-font);
+}
+
 .mc-game-timer-bar {
   transition: width 1s linear;
-  width:100%
+  width:100%;
+  background-image:linear-gradient(to left, var(--bs-primary), #57BAC6);
 }
 
 .progress {
@@ -247,6 +296,17 @@ hr.mc-header-line {
 
 .mc-footer a {
   color:var(--bs-secondary);
+  text-decoration: none;
+  border-bottom:1px solid rgba(255, 255,255, .2);
+  transition: all .3s ease-in-out;
+}
+
+.mc-footer a.mc-link-icon {
+  border-bottom:0;
+}
+.mc-footer a:hover {
+  color:var(--bs-light);
+  border-bottom-color:rgba(255, 255, 255, .5);
 }
 .mc-footer-hr {
   position:absolute;
@@ -256,6 +316,15 @@ hr.mc-header-line {
   width:100%;
 }
 
+.mc-footer .bi {
+  font-size:1.5rem;
+}
+
+.mc-footer .container {
+  text-align: center;
+  padding:2rem 0;
+}
+
 @media screen and (max-width: 768px) {
   :root {
     font-size:20px;
@@ -263,6 +332,10 @@ hr.mc-header-line {
 
   .mc-header {
     padding-bottom:1rem;
+  }
+
+  .mc-header nav {
+    justify-content: center;
   }
 
   .mc-logo span {

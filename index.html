@@ -16,10 +16,10 @@
 <header class="mc-header text-white mb-md-2">
 
   <nav class="navbar container">
-    <h1 class="mc-logo navbar-brand col text-center text-md-start"><img src="img/mc-icon.svg"
+    <h1 class="mc-logo navbar-brand text-center text-md-start"><img src="img/mc-icon.svg"
         width="50"><span>MathChamp</span>
     </h1>
-    <div class="mc-slogan text-center text-md-end text-white-50 col">Play Games. Practice Facts. Become a Champ!
+    <div class="mc-slogan text-center text-md-end text-white-50">Play Games. Practice Facts. Become a Champ!
     </div>
   </nav>
 
@@ -28,13 +28,13 @@
 <main class="container-lg mb-5 pt-4 mt-md-4">
   <article>
     <h1 class="text-center text-md-start">Become A Math Facts Champ!</h1>
-    <p class="fst-italic text-center text-md-start">Choose your settings below to start playing!</p>
+    <p class="fst-italic text-center text-md-start mb-4">Choose your settings below to start playing!</p>
   </article>
   <div class="row gx-5">
     <section class="mc-settings col-md-7 col-lg-6 pb-4">
       <div class="card">
-        <div class="card-body pt-4 pb-5">
-          <h2 class="mb-3">Start New Game</h2>
+        <div class="card-body">
+          <h2 class="mb-4">Start New Game</h2>
           <div class="mb-3">
             <label class="form-label">I want to practice...</label>
             <select class="mc-settings-type form-select">
@@ -46,7 +46,7 @@
           </div>
           <label class="form-label">I want to focus on <span class="mc-settings-type-verb">adding</span> the
             number...</label>
-          <div class="mb-3 row align-items-center">
+          <div class="mb-3 row justify-content-between align-items-center">
             <div class="col-4">
               <select class="mc-settings-focus form-select">
                 <option value="1">1</option>
@@ -98,21 +98,25 @@
   </div>
 </main>
 
-<section class="mc-scoreboard-container text-white pt-5 pb-5">
+<section class="mc-scoreboard-container text-white">
   <hr class="mc-header-line">
   <div class="container">
-    <h2 class="text-center">My Scoreboard</h2>
+    <h2 class="text-center pb-2">My Scoreboard</h2>
     <div class="mc-scoreboard mc-no-scores">
       Play some games to add scores here!
     </div>
-    <button class="mc-scoreboard-btn-clear btn btn-outline-light d-block mt-4 mx-auto">Clear Scores</button>
+    <button class="mc-scoreboard-btn-clear btn btn-outline-light d-block mt-4 mx-auto "><i class="bi bi-stars"></i>
+      Clear
+      Scores</button>
   </div>
 
 </section>
 
-<footer class="mc-footer pt-5 pb-5 text-center text-white-50">
+<footer class="mc-footer text-center text-white-50">
   <hr class="mc-footer-hr">
-  <div class="container">Written by <a href="https://github.com/Ttesori">Toni</a></div>
+  <div class="container"><a href="https://github.com/Ttesori" class="mc-link-icon"><i class="bi bi-github"></i></a>
+    <br>Written by <a href="https://tonitesori.dev">Toni</a>
+  </div>
 </footer>
 
 <section class="mc-game-modal">
@@ -123,17 +127,16 @@
       <div class="mc-game-problem-type">+</div>
       <div class="mc-game-problem-2">1</div>
       <div class="mc-game-problem-equals">=</div>
-      <input type="number" class="mc-game-answer">
+      <input type="number" class="mc-game-answer" maxlength="3" max="1000" min="0">
     </section>
     <div class="mc-game-feedback">This is some feedback</div>
     <div class="progress mc-game-timer">
-      <span class="mc-game-timer-bar progress-bar progress-bar-striped progress-bar-animated bg-info"
-        role="progressbar">
+      <span class="mc-game-timer-bar progress-bar  " role="progressbar">
         <span class="mc-game-timer-text">Ready...set...GO!</span>
       </span>
 
     </div>
-    <button class="mc-btn-stop btn btn-sm btn-outline-danger">Stop Game</button>
+    <button class="mc-btn-stop btn btn-sm btn-outline-danger mt-4">Stop Game</button>
   </div>
 </section>
 
