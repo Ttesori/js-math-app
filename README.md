@@ -1,4 +1,4 @@
-<img src="https://mathchamp.netlify.app/img/mc-logo.svg" alt="MathChamp Logo" width="75%">
+<p align="center"><img src="https://mathchamp.netlify.app/img/mc-logo.svg" alt="MathChamp Logo" width="75%"></p>
 
 # MathChamp: A Math Facts Game
 This project is a game to help kids get better at basic math facts: addition, subtraction, multiplication and division. It was inspired by my daughter's trials learning her facts while studying at home during the pandemic.
