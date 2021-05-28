@@ -1,16 +1,21 @@
+@import url('bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css');
+
 :root {
-  --bs-primary: #2AA7B6;
-  --bs-secondary: #9FCD60;
-  --bs-dark: #303E5C;
-  --bs-light:#F4FBFB;
-  --bs-font: 'Roboto Slab',serif;
+  --bs-primary: #2aa7b6;
+  --bs-secondary: #9fcd60;
+  --bs-dark: #303e5c;
+  --bs-light: #f4fbfb;
+  --bs-font: 'Roboto Slab', serif;
 }
 
 body {
-  color: var(--bs-dark)
+  color: var(--bs-dark);
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: var(--bs-font);
   font-weight: 600;
 }
@@ -24,64 +29,67 @@ main h2 {
 }
 
 hr.mc-header-line {
-  border:36px solid var(--bs-secondary);
-  position:absolute;
-  top:15px;
-  left:0;
-  z-index:-1;
-  opacity:1;
-  width:100%;
-  transform:rotate(.7deg);
-  margin:0;
+  border: 36px solid var(--bs-secondary);
+  position: absolute;
+  top: 15px;
+  left: 0;
+  z-index: -1;
+  opacity: 1;
+  width: 100%;
+  transform: rotate(0.7deg);
+  margin: 0;
 }
 
 .mc-header .navbar {
-  padding-left:2rem;
-  padding-right:2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .mc-scoreboard-container hr.mc-header-line {
-  top:-8px;
+  top: -8px;
 }
 
 .mc-settings .card-body {
-  padding:1.75rem 1.25rem 2.25rem;
-  box-shadow:0px 0px .75rem #eee;
+  padding: 1.75rem 1.25rem 2.25rem;
+  box-shadow: 0px 0px 0.75rem #eee;
 }
 
 .mc-settings h2 {
-  font-size:1.6rem;
+  font-size: 1.6rem;
 }
 
-.mc-settings input, .mc-settings select, .mc-settings label {
+.mc-settings input,
+.mc-settings select,
+.mc-settings label {
   color: var(--bs-dark);
 }
 
 .mc-settings-or {
-  display:block;
+  display: block;
   text-align: center;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .mc-settings .form-check-input:checked {
-  background-color:var(--bs-secondary);
-  border-color:var(--bs-secondary);
+  background-color: var(--bs-secondary);
+  border-color: var(--bs-secondary);
 }
 
 .mc-settings .form-check-input:focus {
-  border-color:#ccc;
-  box-shadow:0 0 0 .25rem #eee;
+  border-color: #ccc;
+  box-shadow: 0 0 0 0.25rem #eee;
 }
 
 .mc-settings select {
-  background-color:var(--bs-light);
+  background-color: var(--bs-light);
 }
 
 .mc-settings .form-check-input {
-  background-color:var(--bs-light);
+  background-color: var(--bs-light);
 }
-.mc-settings label, .mc-settings-or {
-  font-family:var(--bs-font);
+.mc-settings label,
+.mc-settings-or {
+  font-family: var(--bs-font);
 }
 
 .mc-slogan {
@@ -89,8 +97,8 @@ hr.mc-header-line {
 }
 
 .mc-settings .btn-primary {
-  font-size:1.1rem;
-  padding:.5rem 1rem;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
 }
 
 .mc-settings .btn-primary:hover {
@@ -99,17 +107,18 @@ hr.mc-header-line {
 
 .btn-primary {
   background-color: var(--bs-secondary);
-  border:0;
+  border: 0;
   font-family: var(--bs-font);
 }
 
-.mc-header h1, .mc-scoreboard h2 {
+.mc-header h1,
+.mc-scoreboard h2 {
   color: #fff;
-} 
+}
 
 .mc-header {
   background: var(--bs-dark);
-  position:relative;
+  position: relative;
 }
 @media screen and (min-width: 768px) {
   .mc-intro {
@@ -117,27 +126,26 @@ hr.mc-header-line {
   }
 }
 
-
 .mc-intro p strong {
-  color:var(--bs-primary);
+  color: var(--bs-primary);
   font-family: var(--bs-font);
 }
 
 .mc-intro img {
-  max-width:400px;
-  display:block;
-  margin:0 auto;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
 }
 
 .mc-logo img {
-  padding-right:10px;
-  margin-top:-5px;
+  padding-right: 10px;
+  margin-top: -5px;
 }
 
 .mc-logo span {
-  font-size:1.5rem;
-  display:inline-block;
-  margin-top:10px;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .mc-settings h2 {
@@ -150,7 +158,7 @@ hr.mc-header-line {
 }
 
 .container-lg {
-  padding:0 2rem;
+  padding: 0 2rem;
 }
 
 .mc-game-modal {
@@ -159,8 +167,8 @@ hr.mc-header-line {
   left: 0;
   right: 0;
   bottom: 0;
-  height:100vh;
-  background: rgba(0, 0, 0, .7);
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .mc-game-container {
@@ -171,10 +179,10 @@ hr.mc-header-line {
   max-width: 85%;
   left: 50%;
   top: 50%;
-  border-radius:.5rem;
+  border-radius: 0.5rem;
   transform: translate(-50%, -50%);
-  border:4px solid var(--bs-secondary);
-  box-shadow:0px 0px 2rem rgba(0,0,0,.5)
+  border: 4px solid var(--bs-secondary);
+  box-shadow: 0px 0px 2rem rgba(0, 0, 0, 0.5);
 }
 
 .active {
@@ -183,7 +191,7 @@ hr.mc-header-line {
 
 .mc-btn-close {
   position: absolute;
-  top: .5rem;
+  top: 0.5rem;
   right: 1rem;
   color: #aaa;
   text-decoration: none;
@@ -195,26 +203,26 @@ hr.mc-header-line {
 }
 
 .mc-game-problem div {
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   font-size: 3.5rem;
-  font-family:var(--bs-font);
-  color:var(--bs-primary);
+  font-family: var(--bs-font);
+  color: var(--bs-primary);
 }
 
- div.mc-game-problem-equals {
-  color:var(--bs-secondary);
+div.mc-game-problem-equals {
+  color: var(--bs-secondary);
 }
 
 .mc-game-answer {
-  border:1px solid var(--bs-secondary);
-  outline:0;
-  border-radius:3px;
-  max-width:125px;
-  font-size:3rem;
-  margin-left:1rem;
-  padding:.25rem .25rem .25rem 1rem;
-  background:var(--bs-light);
-  color:var(--bs-dark);
+  border: 1px solid var(--bs-secondary);
+  outline: 0;
+  border-radius: 3px;
+  max-width: 125px;
+  font-size: 3rem;
+  margin-left: 1rem;
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
+  background: var(--bs-light);
+  color: var(--bs-dark);
   font-family: var(--bs-font);
   text-align: center;
 }
@@ -222,120 +230,120 @@ hr.mc-header-line {
 .mc-game-feedback {
   font-size: 1.25rem;
   font-style: italic;
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
   text-align: center;
-  color:var(--bs-dark);
+  color: var(--bs-dark);
 }
 
 .mc-scoreboard-container {
-  background:var(--bs-primary);
-  position:relative;
+  background: var(--bs-primary);
+  position: relative;
   text-align: center;
-  padding:2rem 0 3rem;
+  padding: 2rem 0 3rem;
 }
 
 .mc-scoreboard td {
   text-align: center;
-  border-bottom-color: rgba(255, 255,255, .3);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
 }
 
 .mc-scoreboard tr:nth-child(odd) td {
-  background-color: rgba(255, 255,255, .1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .mc-scoreboard th {
   font-family: var(--bs-font);
-  font-weight:600;
+  font-weight: 600;
   text-align: center;
-  border-bottom-color: rgba(255, 255, 255, .5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
 }
 
 .mc-no-scores {
   font-style: italic;
   font-family: var(--bs-font);
-  font-size:1.2rem;
-  color: rgba(255, 255, 255, .5)!important;
-  border:3px dashed rgba(255, 255, 255, .25);
-  border-radius:1rem;
-  padding:1.25rem 1.5rem;
-  max-width:500px;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5) !important;
+  border: 3px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  max-width: 500px;
   margin: 1.5rem auto 0;
 }
 
 .mc-scoreboard-btn-clear {
-  border-color:rgba(255, 255, 255, .5);
-  color:rgba(255, 255, 255, .9);
-  font-family:var(--bs-font);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--bs-font);
 }
 
 .mc-game-timer-bar {
   transition: width 1s linear;
-  width:100%;
-  background-image:linear-gradient(to left, var(--bs-primary), #57BAC6);
+  width: 100%;
+  background-image: linear-gradient(to left, var(--bs-primary), #57bac6);
 }
 
 .progress-bar {
-  background-color:var(--bs-primary);
+  background-color: var(--bs-primary);
 }
 
 .progress {
-  height:2rem;
+  height: 2rem;
 }
 
 .mc-game-timer-text {
-  font-size:1rem;
-  padding:1rem;
+  font-size: 1rem;
+  padding: 1rem;
 }
 
 .mc-btn-stop {
-  display:block;
-  margin:1rem auto 0;
+  display: block;
+  margin: 1rem auto 0;
 }
 
 .mc-footer {
-  background:var(--bs-dark);
+  background: var(--bs-dark);
   font-family: var(--bs-font);
-  position:relative;
+  position: relative;
 }
 
 .mc-footer a {
-  color:var(--bs-secondary);
+  color: var(--bs-secondary);
   text-decoration: none;
-  border-bottom:1px solid rgba(255, 255,255, .2);
-  transition: all .3s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 .mc-footer a.mc-link-icon {
-  border-bottom:0;
+  border-bottom: 0;
 }
 .mc-footer a:hover {
-  color:var(--bs-light);
-  border-bottom-color:rgba(255, 255, 255, .5);
+  color: var(--bs-light);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
 }
 .mc-footer-hr {
-  position:absolute;
-  opacity:1;
-  border:1px solid var(--bs-secondary);
-  top:-8px;
-  width:100%;
+  position: absolute;
+  opacity: 1;
+  border: 1px solid var(--bs-secondary);
+  top: -8px;
+  width: 100%;
 }
 
 .mc-footer .bi {
-  font-size:1.5rem;
+  font-size: 1.5rem;
 }
 
 .mc-footer .container {
   text-align: center;
-  padding:2rem 0;
+  padding: 2rem 0;
 }
 
 @media screen and (max-width: 768px) {
   :root {
-    font-size:20px;
+    font-size: 20px;
   }
 
   .mc-header {
-    padding-bottom:1rem;
+    padding-bottom: 1rem;
   }
 
   .mc-header nav {
@@ -343,100 +351,111 @@ hr.mc-header-line {
   }
 
   .mc-logo span {
-    font-size:2rem;
-    padding-left:10px;
+    font-size: 2rem;
+    padding-left: 10px;
   }
 
   .mc-logo img {
-    width:75px;
-    margin-top:-15px;
+    width: 75px;
+    margin-top: -15px;
+  }
+
+  .mc-settings-or {
+    font-size: 1.1rem;
+  }
+
+  .mc-focus-formEls .col-6 {
+    width: 100%;
+  }
+
+  .mc-focus-formEls .col-6 br {
+    display: none;
   }
 
   .mc-no-scores {
-    font-size:1rem;
+    font-size: 1rem;
   }
 
   .mc-scoreboard table {
-    font-size:.9rem;
-    line-height:1.3;
+    font-size: 0.9rem;
+    line-height: 1.3;
     vertical-align: bottom;
   }
 
-  .col-secAns, .col-length {
-    display:none;
+  .col-secAns,
+  .col-length {
+    display: none;
   }
 
   .mc-scoreboard-btn-clear {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   .mc-footer {
-    font-size:.9rem;
+    font-size: 0.9rem;
   }
 }
 
 @media screen and (max-width: 468px) {
   :root {
-    font-size:17px;
+    font-size: 17px;
   }
   .navbar-brand {
-    margin:0;
-    display:flex;
+    margin: 0;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align:center;
-
+    text-align: center;
   }
   .mc-logo img {
-    display:inline-block;
-    margin:0 auto;
+    display: inline-block;
+    margin: 0 auto;
   }
   .mc-logo span {
-    padding:0;
+    padding: 0;
   }
 
   .mc-slogan {
-    display:none;
+    display: none;
   }
 
   .mc-main {
-    padding:0.5rem;
-    margin:0;
+    padding: 0.5rem;
+    margin: 0;
   }
 
   .mc-article {
-    padding:0 1rem;
+    padding: 0 1rem;
   }
 
   .mc-article p {
-    font-size:1rem;
+    font-size: 1rem;
   }
 
   .mc-settings h2 {
-    font-size:1.4rem;
+    font-size: 1.4rem;
   }
 
   .mc-focus-formEls {
-    flex-wrap:wrap;
+    flex-wrap: wrap;
   }
 
   .mc-focus-formEls .col-4 {
-    width:70%;
-  } 
+    width: 70%;
+  }
   .mc-focus-formEls .col-2 {
-    width:25%;
-    padding:0;
+    width: 25%;
+    padding: 0;
   }
 
   .mc-focus-formEls .col-6 {
     width: 90%;
-    margin-top:.5rem;
-  padding-left:5rem;
+    margin-top: 0.5rem;
+    padding-left: 5rem;
   }
 
-
   .mc-settings-or {
-    text-align:left;
+    text-align: left;
   }
 
   .mc-row-start {
@@ -444,41 +463,45 @@ hr.mc-header-line {
   }
 
   .mc-row-start div {
-    width:100%;
+    width: 100%;
   }
 
   #mc-settings-btn {
-    margin-top:1rem;
+    margin-top: 1rem;
   }
 
   .mc-intro {
     padding: 0 2.5rem;
-    font-size:.95rem;
+    font-size: 0.95rem;
   }
 
-  .col-length, .col-focusNum, .col-correct{
-    display:none;
+  .mc-intro img {
+    max-width: 95%;
   }
- font-size:.9rem;
+
+  .col-length,
+  .col-focusNum,
+  .col-correct {
+    display: none;
   }
+
   .mc-game-problem {
-    flex-wrap:wrap;
+    flex-wrap: wrap;
   }
   .mc-game-problem div {
-    font-size:2.5rem;
-    padding:0 .5rem;
+    font-size: 2.5rem;
+    padding: 0 0.5rem;
   }
   .mc-game-answer {
-    width:55%;
-    margin:.25rem 0 0 0;
-    padding:.25rem .35rem;
-    font-size:2rem;
-    text-align:center;
+    width: 55%;
+    margin: 0.25rem 0 0 0;
+    padding: 0.25rem 0.35rem;
+    font-size: 2rem;
+    text-align: center;
   }
   .mc-game-feedback {
-    font-size:.9rem;
+    font-size: 0.9rem;
   }
-
 }
 
 @media (prefers-reduced-motion) {
