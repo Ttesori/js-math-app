@@ -480,3 +480,9 @@ hr.mc-header-line {
   }
 
 }
+
+@media (prefers-reduced-motion) {
+  a:hover {
+    transition: none;
+  }
+}
