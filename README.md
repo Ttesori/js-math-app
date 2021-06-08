@@ -24,3 +24,4 @@ Future optimizations that I'd like to add to this:
 - Add the ability to sign in and save scores to a database
 - Add the ability for facts to be presented in sequential order, for when the user is first learning a particular set of facts
 - Add a mega-challenge mode with larger numbers (@simonpaix)
+- Randomize the operators (@natension)
