@@ -81,7 +81,7 @@ const gameIsOver = () => {
   let date = new Date();
   let gameSettings = settings.getSettings();
   let score = {
-    date: `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`,
+    date: `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`,
     type: settings.getPrettyType(),
     correct: gameStats.correct,
     percentage: corrPercentage,
