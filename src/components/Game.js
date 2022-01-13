@@ -24,7 +24,6 @@ const Game = () => {
     if (type === 'mixed') {
       const types = ['+', '-', '*', '/'];
       type = types[Math.floor(Math.random() * 4)];
-      console.log('type', type)
     }
     if (type === '+') {
       let num1 = focusNum !== -1 ? focusNum : getRand(9);
