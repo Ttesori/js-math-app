@@ -227,7 +227,7 @@ const UI = () => {
     parseSettings: () => {
       return {
         focus: !settingsEl.settingMixedEl.checked ? parseInt(settingsEl.settingFocusEl.value) : -1,
-        type: settingsEl.settingTypeEl.value,
+        type: settingsEl.settingTypeMixedEl.checked ? 'mixed' : settingsEl.settingTypeEl.value,
         mixed: settingsEl.settingMixedEl.checked ? true : false,
         length: parseInt(settingsEl.settingLengthEl.value)
       }
