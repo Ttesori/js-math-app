@@ -23,7 +23,7 @@ const Game = () => {
     // TODO: Allow user to choose max num
     if (type === 'mixed') {
       const types = ['+', '-', '*', '/'];
-      type = types[Math.floor(Math.random * 4)];
+      type = types[Math.floor(Math.random() * 4)];
       console.log('type', type)
     }
     if (type === '+') {
@@ -33,7 +33,7 @@ const Game = () => {
       state.currNum2 = Math.min(num1, num2);
 
       state.currAnswer = state.currNum1 + state.currNum2;
-      return [state.currNum1, state.currNum2, state.currAnswer];
+      return [state.currNum1, state.currNum2, state.currAnswer, type];
 
     } else if (type === '-') {
       let num1 = focusNum !== -1 ? focusNum : getRand(9);
@@ -42,7 +42,7 @@ const Game = () => {
       state.currNum2 = Math.min(num1, num2);
 
       state.currAnswer = state.currNum1 - state.currNum2;
-      return [state.currNum1, state.currNum2, state.currAnswer];
+      return [state.currNum1, state.currNum2, state.currAnswer, type];
     } else if (type === '*') {
       let num1 = focusNum !== -1 ? focusNum : getRand(12);
       let num2 = getRand(12);
@@ -50,7 +50,7 @@ const Game = () => {
       state.currNum2 = Math.min(num1, num2);
 
       state.currAnswer = state.currNum1 * state.currNum2;
-      return [state.currNum1, state.currNum2, state.currAnswer];
+      return [state.currNum1, state.currNum2, state.currAnswer, type];
 
     } else {
       let num1 = focusNum !== -1 ? focusNum : getRand(12);
@@ -59,7 +59,7 @@ const Game = () => {
       state.currNum2 = num1;
 
       state.currAnswer = state.currNum1 / state.currNum2;
-      return [state.currNum1, state.currNum2, state.currAnswer];
+      return [state.currNum1, state.currNum2, state.currAnswer, type];
     }
   }
 

@@ -138,6 +138,7 @@ const UI = () => {
     gameEl.gameProblem1El.textContent = problem[0];
     gameEl.gameProblem2El.textContent = problem[1];
     let prettyType = type;
+    if (prettyType === 'mixed') prettyType = problem[3];
     if (prettyType === '*') prettyType = 'x';
     if (prettyType === '/') prettyType = '&divide;'
     gameEl.gameProblemTypeEl.innerHTML = prettyType;
