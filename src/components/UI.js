@@ -175,6 +175,8 @@ const UI = () => {
     gameEl.gameBtnStopEl.textContent = 'Close Window';
   }
 
+  const _formatDate = date => `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+
   const _updateScoreboard = (scores, callback) => {
     if (scores.length === 0) {
       // hide clear scores button
@@ -186,7 +188,7 @@ const UI = () => {
 
     const scoresEls = scores.map((score) => `
     <tr>
-    <td>${score.date}</td>
+    <td>${_formatDate(new Date(score.date))}</td>
     <td>${score.type}</td>
     <td class="col-length">${score.length} seconds</td>
     <td class="col-focusNum">${score.focusNum}</td>
