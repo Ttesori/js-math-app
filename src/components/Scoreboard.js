@@ -9,8 +9,11 @@ const Scoreboard = () => {
   }
 
   const _getScores = () => {
+    _sortScores();
     return scores;
   }
+
+  const _sortScores = () => scores.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const _saveScores = () => {
     let stringScores = JSON.stringify(scores);
@@ -21,6 +24,7 @@ const Scoreboard = () => {
     let savedScores = localStorage.getItem('mc-game-scores');
     if (savedScores) {
       scores = JSON.parse(savedScores);
+      _sortScores();
       return scores;
     } else {
       return []
