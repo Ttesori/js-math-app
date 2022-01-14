@@ -77,11 +77,15 @@ const gameIsOver = () => {
   // Reset timer
   ui.resetTimerBar();
 
+  // Save Scoreboard
+  saveScoreboard(corrPercentage, gameStats)
+}
+
+const saveScoreboard = (corrPercentage, gameStats) => {
   // Update Scoreboard
-  let date = new Date();
   let gameSettings = settings.getSettings();
   let score = {
-    date: `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`,
+    date: new Date(),
     type: settings.getPrettyType(),
     correct: gameStats.correct,
     percentage: corrPercentage,
