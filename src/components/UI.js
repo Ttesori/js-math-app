@@ -2,6 +2,7 @@ const UI = () => {
   // Settings Elements
   const settingsEl = {
     settingTypeEl: document.querySelector('.mc-settings-type'),
+    settingTypeMixedEl: document.querySelector('.mc-settings-mixedOperators'),
     settingFocusEl: document.querySelector('.mc-settings-focus'),
     settingTypeVerbEl: document.querySelector('.mc-settings-type-verb'),
     settingMixedEl: document.querySelector('.mc-settings-mixed'),
@@ -42,10 +43,23 @@ const UI = () => {
         settingsEl.settingFocusEl.removeAttribute('disabled');
       }
     });
+
+    settingsEl.settingTypeMixedEl.addEventListener('change', () => {
+      const mixedTypeElValue = settingsEl.settingTypeMixedEl.checked;
+      if (mixedTypeElValue) {
+        settingsEl.settingTypeEl.disabled = "disabled";
+
+      } else {
+        settingsEl.settingTypeEl.removeAttribute('disabled');
+      }
+      updateFromType();
+    });
+
+
   }
 
   const updateFromType = () => {
-    const type = settingsEl.settingTypeEl.value;
+    const type = settingsEl.settingTypeMixedEl.checked ? 'mixed' : settingsEl.settingTypeEl.value;
     settingsEl.settingFocusEl.removeAttribute('disabled');
 
     let addSubNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -59,7 +73,7 @@ const UI = () => {
       return `<option value="${num}">${num}</option>`;
     });
 
-    // Removed mixed checked if checkced
+    // Removed mixed checked if checked
     if (settingsEl.settingMixedEl.checked) settingsEl.settingMixedEl.checked = false;
 
     switch (type) {
@@ -84,6 +98,11 @@ const UI = () => {
         // focus num list goes to 12
         settingsEl.settingTypeVerbEl.innerHTML = 'dividing';
         settingsEl.settingFocusEl.innerHTML = multHTML;
+        break;
+      case 'mixed':
+        // focus num list goes to 10
+        settingsEl.settingTypeVerbEl.innerHTML = '';
+        settingsEl.settingFocusEl.innerHTML = addHTML;
         break;
       default:
         break;
@@ -119,6 +138,7 @@ const UI = () => {
     gameEl.gameProblem1El.textContent = problem[0];
     gameEl.gameProblem2El.textContent = problem[1];
     let prettyType = type;
+    if (prettyType === 'mixed') prettyType = problem[3];
     if (prettyType === '*') prettyType = 'x';
     if (prettyType === '/') prettyType = '&divide;'
     gameEl.gameProblemTypeEl.innerHTML = prettyType;
@@ -208,7 +228,7 @@ const UI = () => {
     parseSettings: () => {
       return {
         focus: !settingsEl.settingMixedEl.checked ? parseInt(settingsEl.settingFocusEl.value) : -1,
-        type: settingsEl.settingTypeEl.value,
+        type: settingsEl.settingTypeMixedEl.checked ? 'mixed' : settingsEl.settingTypeEl.value,
         mixed: settingsEl.settingMixedEl.checked ? true : false,
         length: parseInt(settingsEl.settingLengthEl.value)
       }

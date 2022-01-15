@@ -20,6 +20,8 @@ const Settings = () => {
         return 'Division';
       case '*':
         return 'Multiplication';
+      case 'mixed':
+        return 'Random';
       default:
         break;
     }
