@@ -4,7 +4,6 @@ const Scoreboard = () => {
   const _addScore = (score) => {
     if (score.focusNum === -1) score.focusNum = 'Mixed';
     scores.push(score);
-
     return _getScores();
   }
 

@@ -82,7 +82,7 @@ const gameIsOver = () => {
 }
 
 const saveScoreboard = (corrPercentage, gameStats) => {
-  // Update Scoreboard
+  // Create score object
   let gameSettings = settings.getSettings();
   let score = {
     date: new Date(),
@@ -93,9 +93,11 @@ const saveScoreboard = (corrPercentage, gameStats) => {
     length: gameSettings.length,
     secAns: (gameSettings.length / (gameStats.correct + gameStats.incorrect)).toFixed(1)
   }
+  // Update scoreboard and save scores to LS
   let scores = scoreboard.addScore(score);
-  ui.updateScoreboard(scores, clearScores);
   scoreboard.saveScores();
+  // Update scoreboard UI
+  ui.updateScoreboard(scores, clearScores);
 }
 
 const runGame = () => {
