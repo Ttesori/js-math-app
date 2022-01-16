@@ -38,8 +38,9 @@
         <div class="card-body">
           <h2 class="mb-4">Start New Game</h2>
           <label class="form-label" for="select-type">I want to practice...</label>
-          <div class="mc-operators-formEls mb-3 row justify-content-between align-items-center">
-            <div class="mb-3 col-4">
+          <div
+            class="mc-operators-formEls mb-3 row justify-content-center justify-content-md-between align-items-center">
+            <div class="mb-3 col-12 col-md-4">
               <select id="select-type" class="mc-settings-type form-select">
                 <option value="+">Addition</option>
                 <option value="-">Subtraction</option>
@@ -47,10 +48,10 @@
                 <option value="/">Division</option>
               </select>
             </div>
-            <div class="mc-col col-2">
-              <span class="mc-settings-or"><strong>OR</strong></span>
+            <div class="mc-col col-2 mb-3">
+              <span class="mc-settings-or text-center"><strong>OR</strong></span>
             </div>
-            <div class="mc-col col-6 form-check form-switch">
+            <div class="mc-col col-8 col-md-6 form-check form-switch mb-3">
               <label class="form-check-label" for="check-mixed-operators">Randomize Operators!</label>
               <input type="checkbox" id="check-mixed-operators" class="mc-settings-mixedOperators form-check-input">
             </div>
@@ -58,8 +59,8 @@
           <label class="form-label" for="select-number">I want to focus on <span
               class="mc-settings-type-verb">adding</span> the
             number...</label>
-          <div class="mc-focus-formEls mb-3 row justify-content-between align-items-center">
-            <div class="mc-col col-4">
+          <div class="mc-focus-formEls mb-3 row justify-content-center justify-content-md-between align-items-center">
+            <div class="mc-col col-12 col-md-4 mb-3">
               <select id="select-number" class="mc-settings-focus form-select">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -73,11 +74,11 @@
                 <option value="10">10</option>
               </select>
             </div>
-            <div class="mc-col col-2">
-              <span class="mc-settings-or"><strong>OR</strong></span>
+            <div class="mc-col col-2 mb-3">
+              <span class="mc-settings-or text-center "><strong>OR</strong></span>
             </div>
-            <div class="mc-col col-6 form-check form-switch">
-              <label class="form-check-label" for="check-mixed">Challenge Mode:<br> Mix It Up!</label>
+            <div class="mc-col col-7 col-md-6 form-check form-switch mb-3">
+              <label class="form-check-label" for="check-mixed">Mix Up Numbers!</label>
               <input type="checkbox" id="check-mixed" class="mc-settings-mixed form-check-input">
             </div>
           </div>
