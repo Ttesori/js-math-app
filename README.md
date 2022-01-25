@@ -20,6 +20,7 @@ The biggest thing this project taught me is that even something that seems relat
 
 Future optimizations that I'd like to add to this:
 
+- Improve accessibility by choosing a different accent color (green is too low contrast)
 - Utilize React for a more responsive front-end
 - Add the ability to sign in and save scores to a database
 - Add the ability for facts to be presented in sequential order, for when the user is first learning a particular set of facts
